@@ -25,7 +25,17 @@ jobs:
             ${{ runner.os }}-node-
 
       - run: npm ci
-      - run: npm run envsub
+      - name: substitute
+        uses: danielr1996/envsubst-action@1.0.0
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          WEBSITE_TITLE: ${{ secrets.WEBSITE_TITLE }}
+          WEBSITE_DOMAIN: ${{ secrets.WEBSITE_DOMAIN }}
+          SITE_CONFIG: ${{ secrets.SITE_CONFIG }}
+          WEBSITE_META_DESCRIPTION: ${{ secrets.WEBSITE_META_DESCRIPTION }}
+        with:
+          input: src/config.example.ts
+          output: src/config.ts
       - run: npm run build
 
       - name: deploy

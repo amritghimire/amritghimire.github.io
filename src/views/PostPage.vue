@@ -36,7 +36,6 @@ import { Blog } from "@/models/blog";
 import Component from "vue-class-component";
 import { Route } from "vue-router/types/router";
 import { Watch } from "vue-property-decorator";
-import { config } from "@/config";
 import { getMeta } from "@/utils/api";
 
 @Component({
@@ -45,7 +44,19 @@ import { getMeta } from "@/utils/api";
     ContentComponent
   },
   metaInfo: {
-    title: getMeta()["title"] || ""
+    title: getMeta()["title"] || "",
+    meta: [
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "description", content: getMeta()["description"] || "" },
+      { name: "robots", content: "index, follow" },
+      { property: "og:title", content: getMeta()["title"] || "" },
+      { property: "og:site_name", content: getMeta()["title"] || "" },
+      { property: "og:type", content: "website" }
+    ],
+    htmlAttrs: {
+      lang: "en"
+    }
   }
 })
 export default class PostPage extends Vue {
@@ -66,6 +77,10 @@ export default class PostPage extends Vue {
     } else {
       this.blog = blog;
       document.title = `${blog.title || ""} - ${getMeta().title}`;
+      const description = document.querySelector('meta[name="description"]');
+      if (description) {
+        description.setAttribute("content", blog.excerpt || "");
+      }
     }
     loading.close();
   }

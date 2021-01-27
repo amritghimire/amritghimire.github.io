@@ -1,16 +1,17 @@
 export const config: { [index: string]: string } = {
-  baseUrl: "http://0.0.0.0:8000",
-  websiteTitle: ""
+  baseUrl: "${BASE_URL}",
+  websiteTitle: "${WEBSITE_TITLE}"
 };
 
 export const metaConfigurations: {
   [index: string]: { title: string; [index: string]: string };
 } = {
-  localhost: {
-    title: ""
+  "${WEBSITE_DOMAIN}": {
+    title: "${WEBSITE_TITLE}",
+    description: "${WEBSITE_META_DESCRIPTION}"
   }
 };
 
 export const siteConfigurations: { [index: string]: string } = {
-  localhost: "default"
+  "${WEBSITE_DOMAIN}": "${SITE_CONFIG}"
 };

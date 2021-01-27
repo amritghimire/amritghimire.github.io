@@ -37,6 +37,7 @@ jobs:
           input: src/config.example.ts
           output: src/config.ts
       - run: npm run build
+      - run: cp dist/index.html dist/404.html
 
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3

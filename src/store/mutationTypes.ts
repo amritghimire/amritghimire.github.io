@@ -1,0 +1,3 @@
+export const SET_SINGLE_META = "SET_SINGLE_META";
+export const SET_META_OBJECT = "SET_META_OBJECT";
+export const MARK_META_FETCHED = "MARK_META_FETCHED";

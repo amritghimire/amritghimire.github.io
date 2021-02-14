@@ -114,6 +114,5 @@ export default class PostPage extends Vue {
 }
 
 .page-title {
-  margin-bottom: 32px;
 }
 </style>

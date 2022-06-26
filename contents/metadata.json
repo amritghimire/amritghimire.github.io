@@ -1,0 +1,10 @@
+{
+ "jira-terminal": {
+  "title": "Jira Terminal",
+  "category": "tech",
+  "excerpt": "The application that can be used for personal usage to manage jira from terminal.",
+  "file": "tech/jira-terminal.md",
+  "keywords": "tech,jira,cli,terminal",
+  "image_url": "https://media.website.johnsoncare.com/media_cf819825-7ce2-4523-b70a-a0b14e599c7b/714553e8-ffdb-4157-9cfd-63f82b8c94d7/3a8b8e07-3d8a-4362-97fd-95a618fd6afa.png"
+ }
+}

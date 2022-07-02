@@ -1,0 +1,134 @@
+{
+ "website": {
+  "intro": "I am a software engineer at Iterative.ai"
+ },
+ "experiences": [
+  {
+   "title": "Software Engineer",
+   "company": "Iterative.ai",
+   "start": "Dec 2021",
+   "end": "Present",
+   "description": "Responsible for BE of custom gitlab integration, billing and model registry in Iterative Studio",
+   "location": "Remote"
+  },
+  {
+   "title": "Programme/Software Developer",
+   "company": "Johnson Care Group",
+   "start": "Jun 2018",
+   "end": "Present",
+   "description": "Responsible for developing and maintaining the web-based \napplications to record and manage day-to-day activities in Care homes under Johnson Care Group.\n● Executed multiple projects for the company with my team of 3.\n● Successful maintenance of 2 different servers using DigitalOcean cloud infrastructure for projects.\n● Introduced a SaaS system along with backup jobs using multiple tech stacks.",
+   "location": " 57- 59 Avenue Road Westcliff-on-Sea Essex SS0 7PJ"
+  },
+  {
+   "title": "Senior Software Engineer",
+   "company": "Leapfrog Technology, Inc",
+   "start": "Jan 2021",
+   "end": "Nov 2021",
+   "description": "Promoted to lead and integrate multiple modules of a project. Responsible for\nanalyzing the requirement, researching for the feasibility, defining the optimal solutions and leading the\nteam to develop and present the project to the client. Built technical, communication and leadership skills\nwhile working as a tech lead for the project.\n● Instrumental in managing a team of 11-25 members through the completion of a project.\n● Guided the team with optimal solutions to approach various requirements within the project.\n● Provided support and reviews for 5+ projects and modules within the company."
+  },
+  {
+   "title": "Software Engineer",
+   "company": "Leapfrog Technology, Inc",
+   "start": "Nov 2019",
+   "end": "Jan 2021",
+   "description": "Worked with multiple teams to successfully develop and deliver projects within the\ncompany. Learned about the AWS ecosystem, Java Based backend development and web\ncomponent-based frontend development using Javascript while working as a software engineer."
+  }
+ ],
+ "projects": [
+  {
+   "title": "Jira Terminal",
+   "description": "The application that can be used for personal usage to manage jira from terminal. ",
+   "link": "https://github.com/amritghimire/jira-terminal",
+   "tags": [
+    "Jira",
+    "Terminal",
+    "CLI"
+   ],
+   "language": "rust"
+  },
+  {
+   "title": "Django Page Hits",
+   "description": "A middleware which stores the records of page view counts ",
+   "link": "https://github.com/amritghimire/django_page_hits",
+    "tags": [
+     "Django",
+     "Page Hits"
+    ],
+   "language": "python"
+  },
+  {
+   "title": "Document Generator",
+   "link": "https://github.com/amritghimire/document-generator",
+   "description": "A tool to generate documents from a template",
+   "tags": [
+    "Document Generator",
+    "Markdown",
+    "HTML"
+   ],
+   "language": "java"
+  },
+  {
+   "title": "Express User Model",
+   "link": "https://github.com/amritghimire/express-user-model",
+   "description": "A library to provide a user backbone with basic requirements to start with. It assumes you are using mongoose with the driver for Mongoose. ",
+    "tags": [
+     "Express",
+     "User Model",
+     "Mongoose",
+     "node",
+     "npm"
+    ],
+   "language": "javascript"
+  },
+  {
+   "title": "Cookiecutter Express",
+   "link": "https://github.com/amritghimire/cookiecutter-express",
+   "description": "Cookiecutter for ExpressJS with mongoose, passportjs, ansible, circleci, sphinx, sentry setup",
+   "tags": [
+    "Cookiecutter",
+    "Express",
+    "Mongoose",
+    "Passport",
+    "Ansible",
+    "CircleCI",
+    "Sphinx",
+    "Sentry"
+   ],
+   "language": "javascript"
+  },
+  {
+   "title": "Share Terminal",
+   "link": "https://github.com/amritghimire/share-terminal",
+   "description": "A rust application to use some of share related information in Nepal",
+   "tags": [
+    "Share",
+    "Terminal",
+    "Rust"
+   ],
+   "language": "rust"
+  }
+ ],
+ "education": [
+  {
+   "title": "Bachelor of Engineering",
+   "subject": "Computer Engineering",
+   "start": "2015",
+   "end": "2019",
+   "institute": "Tribhuvan University"
+  }
+ ],
+ "certifications": [
+  {
+   "title": " Machine Learning A-Z™: Hands-On Python & R In Data Science",
+   "issuer": "Udemy",
+   "link": "https://www.udemy.com/certificate/UC-aa9181eb-f86e-47bb-bb75-82eb359a74d2/",
+   "issued_at": "July 2022"
+  },
+  {
+   "title": "Machine Learning",
+   "issuer": "Stanford University",
+   "link": "https://www.coursera.org/account/accomplishments/verify/CXVFQXM3T3LT",
+   "issued_at": "Jan 2022"
+  }
+ ]
+}

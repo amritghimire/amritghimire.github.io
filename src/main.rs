@@ -3,8 +3,8 @@ use yew_router::prelude::*;
 
 mod components;
 mod content;
-mod generator;
 mod pages;
+mod personal;
 mod posts;
 use pages::{home::Home, page_not_found::PageNotFound, post::Post, post_list::PostList};
 use yew::html::Scope;
@@ -77,9 +77,9 @@ impl Model {
         let active_class = if !navbar_active { "is-active" } else { "" };
 
         html! {
-            <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+            <nav class="navbar is-dark is-spaced has-shadow" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
-                    <h1 class="navbar-item is-size-3">{ "Yew Blog" }</h1>
+                    <h1 class="navbar-item is-size-3">{ "Amrit Ghimire" }</h1>
 
                     <button class={classes!("navbar-burger", "burger", active_class)}
                         aria-label="menu" aria-expanded="false"
@@ -91,12 +91,12 @@ impl Model {
                     </button>
                 </div>
                 <div class={classes!("navbar-menu", active_class)}>
-                    <div class="navbar-start">
+                    <div class="navbar-end">
                         <Link<Route> classes={classes!("navbar-item")} to={Route::Home}>
                             { "Home" }
                         </Link<Route>>
                         <Link<Route> classes={classes!("navbar-item")} to={Route::Posts}>
-                            { "Posts" }
+                            { "Blog" }
                         </Link<Route>>
 
                         <div class="navbar-item has-dropdown is-hoverable">

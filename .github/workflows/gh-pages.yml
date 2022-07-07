@@ -23,7 +23,7 @@ jobs:
           profile: default
           toolchain: stable
 
-      - uses: jetli/trunk-action@v0.1.0
+      - run: cargo install --locked trunk
 
       - uses: Swatinem/rust-cache@v1
 

@@ -15,5 +15,3 @@ pub struct Post {
     pub meta: PostMeta,
     pub content: String,
 }
-
-

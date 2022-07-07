@@ -1,5 +1,5 @@
-use yew::prelude::*;
 use stylist::{style, Style};
+use yew::prelude::*;
 
 pub struct Home;
 impl Component for Home {
@@ -39,22 +39,22 @@ impl Component for Home {
 impl Home {
     fn view_intro(&self) -> Html {
         html! {
-            <section class={classes!("hero","is-link","is-fullheight-with-navbar", self.intro_style())}>
-                <figure class="image is-fullwidth hero-background is-transparent">
-                    <img alt="Fill Murray" src="https://www.fillmurray.com/1920/1080" />
-                </figure>
-              <div class="hero-body">
-                <div class="container has-text-centered">
-                  <p class="title">
-                  {"Title"}
-                  </p>
-                  <p class="subtitle">
-                  {"Subtitle"}
-                  </p>
-                </div>
-              </div>
-            </section>
-            }
+        <section class={classes!("hero","is-link","is-fullheight-with-navbar", self.intro_style())}>
+            <figure class="image is-fullwidth hero-background is-transparent">
+                <img alt="Fill Murray" src="https://www.fillmurray.com/1920/1080" />
+            </figure>
+          <div class="hero-body">
+            <div class="container has-text-centered">
+              <p class="title">
+              {"Title"}
+              </p>
+              <p class="subtitle">
+              {"Subtitle"}
+              </p>
+            </div>
+          </div>
+        </section>
+        }
     }
 
     fn view_blogs(&self) -> Html {
@@ -111,6 +111,7 @@ impl Home {
                   opacity: 0.3;
                 }
             "#
-        ).expect("Failed to mount style!")
+        )
+        .expect("Failed to mount style!")
     }
 }

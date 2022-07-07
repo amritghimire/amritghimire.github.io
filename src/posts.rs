@@ -93,10 +93,8 @@ impl PostGenerator {
     }
 
     pub fn get_posts(&self, page: usize) -> Vec<PostMeta> {
-        web_sys::console::log_1(&format!("Hello World {}", (page-1)*10).into());
-
         let mut skip_count = (page - 1) * 10;
-        if skip_count>0 {
+        if skip_count > 0 {
             skip_count -= 1;
         }
         self.metadata
@@ -105,5 +103,11 @@ impl PostGenerator {
             .take(10)
             .map(|(key, value)| value.post_meta(key))
             .collect()
+    }
+}
+
+impl Default for PostGenerator {
+    fn default() -> Self {
+        Self::new()
     }
 }

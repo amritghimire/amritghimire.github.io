@@ -5,7 +5,7 @@ use crate::Route;
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-const ITEMS_PER_PAGE: usize = 10;
+pub const ITEMS_PER_PAGE: usize = 10;
 
 pub enum Msg {
     PageUpdated,

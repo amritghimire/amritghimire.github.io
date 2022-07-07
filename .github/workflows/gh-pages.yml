@@ -7,8 +7,72 @@ on:
   pull_request:
 
 jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - uses: Swatinem/rust-cache@v1
+      - uses: actions-rs/cargo@v1
+        with:
+          command: check
+
+  test:
+    name: Test Suite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - uses: Swatinem/rust-cache@v1
+      - uses: actions-rs/cargo@v1
+        with:
+          command: test
+
+  fmt:
+    name: Rustfmt
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - run: rustup component add rustfmt
+      - uses: Swatinem/rust-cache@v1
+      - uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --all -- --check
+
+  clippy:
+    name: Clippy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - run: rustup component add clippy
+      - uses: Swatinem/rust-cache@v1
+      - uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: -- -D warnings
   deploy:
     runs-on: ubuntu-20.04
+    needs: [check, test, fmt, clippy]
     permissions:
       contents: write
     concurrency:
@@ -23,21 +87,13 @@ jobs:
           profile: default
           toolchain: stable
 
+      - uses: Swatinem/rust-cache@v1
       - run: cargo install --locked trunk
       - run: rustup target add wasm32-unknown-unknown
-
-      - uses: Swatinem/rust-cache@v1
-
-      - name: Lint
-        run: cargo fmt -- --check && cargo clippy -- -Dwarnings
-
-      - name: Test
-        run: cargo test
-
       - name: Build
         run: trunk build --release
 
-      - name: Deploy
+      - name: Push
         uses: peaceiris/actions-gh-pages@v3
         # If you're changing the branch from main, 
         # also change the `main` in `refs/heads/main` 

@@ -24,6 +24,7 @@ jobs:
           toolchain: stable
 
       - run: cargo install --locked trunk
+      - run: rustup target add wasm32-unknown-unknown
 
       - uses: Swatinem/rust-cache@v1
 

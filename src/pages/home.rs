@@ -1,35 +1,48 @@
 use stylist::{style, Style};
 use yew::prelude::*;
 
-pub struct Home;
+use crate::personal::generator::Generator;
+use crate::posts::PostGenerator;
+use crate::components::post_card::PostCard;
+
+pub struct Home{
+    generator: Generator,
+    post_generator: PostGenerator
+}
 impl Component for Home {
     type Message = ();
     type Properties = ();
 
     fn create(_ctx: &Context<Self>) -> Self {
-        Self
+        let generator = Generator::new();
+        let post_generator = PostGenerator::new();
+
+        Self {
+            generator,
+            post_generator
+        }
     }
 
     fn view(&self, _ctx: &Context<Self>) -> Html {
-        html! {
-            <div class="tile is-ancestor is-vertical">
+        return html! {
+            <div>
                 { self.view_intro() }
-                <div class="tile is-parent container">
+                <div class="container">
                     { self.view_blogs() }
                 </div>
-                <div class="tile is-parent container">
+                <div class="container">
                     { self.view_experiences() }
                 </div>
-                <div class="tile is-parent container">
+                <div class="container">
                     { self.view_projects() }
                 </div>
-                <div class="tile is-parent container">
+                <div class="container">
                     { self.view_education() }
                 </div>
-                <div class="tile is-parent container">
+                <div class="container">
                     { self.view_certifications() }
                 </div>
-                <div class="tile is-parent container">
+                <div class="container">
                     { self.view_contact() }
                 </div>
             </div>
@@ -38,18 +51,18 @@ impl Component for Home {
 }
 impl Home {
     fn view_intro(&self) -> Html {
-        html! {
+        return html! {
         <section class={classes!("hero","is-link","is-fullheight-with-navbar", self.intro_style())}>
             <figure class="image is-fullwidth hero-background is-transparent">
-                <img alt="Fill Murray" src="https://www.fillmurray.com/1920/1080" />
+                <img alt="Fill Murray" src="/img/amrit.png" />
             </figure>
           <div class="hero-body">
             <div class="container has-text-centered">
-              <p class="title">
-              {"Title"}
+              <p class="title is-size-1">
+              {"Amrit Ghimire, Ranjit"}
               </p>
-              <p class="subtitle">
-              {"Subtitle"}
+              <p class="subtitle is-size-2">
+              {&self.generator.website().intro}
               </p>
             </div>
           </div>
@@ -58,37 +71,55 @@ impl Home {
     }
 
     fn view_blogs(&self) -> Html {
-        html! {
-            <section class="section"></section>
+        let posts = self.post_generator.get_posts_for_home();
+        let cards = posts.iter().map(|post| {
+            html! {
+                <li class="tile is-child is-4">
+                    <PostCard slug={post.slug.clone()} />
+                </li>
+            }
+        });
+
+        return html! {
+            <section class="section">
+            <div class="container">
+                <h1 class="title content has-text-centered">{"Some posts so far.."}</h1>
+                <div class="tile is-ancestor">
+                <div class="tile is-parent is-12 ">
+                    { for cards }
+                </div>
+                </div>
+            </div>
+            </section>
         }
     }
 
     fn view_experiences(&self) -> Html {
-        html! {
+        return html! {
             <section class="section"></section>
         }
     }
 
     fn view_projects(&self) -> Html {
-        html! {
+        return html! {
             <section class="section"></section>
         }
     }
 
     fn view_education(&self) -> Html {
-        html! {
+        return html! {
             <section class="section"></section>
         }
     }
 
     fn view_certifications(&self) -> Html {
-        html! {
+        return html! {
             <section class="section"></section>
         }
     }
 
     fn view_contact(&self) -> Html {
-        html! {
+        return html! {
             <section class="section"></section>
         }
     }

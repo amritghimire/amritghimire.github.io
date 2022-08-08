@@ -18,6 +18,7 @@ struct MetadataJson {
     keywords: Option<String>,
     image_url: Option<String>,
     excerpt: Option<String>,
+    show_in_home: Option<bool>
 }
 
 impl MetadataJson {
@@ -28,6 +29,7 @@ impl MetadataJson {
             slug: String::from(slug),
             excerpt: self.excerpt.clone().unwrap_or_else(|| String::from("")),
             image_url: self.image_url.clone().unwrap_or_else(|| String::from("")),
+            show_in_home: self.show_in_home.unwrap_or(true),
             keywords: self
                 .keywords
                 .clone()
@@ -101,6 +103,15 @@ impl PostGenerator {
             .iter()
             .skip(skip_count)
             .take(10)
+            .map(|(key, value)| value.post_meta(key))
+            .collect()
+    }
+
+    pub fn get_posts_for_home(&self) -> Vec<PostMeta> {
+        self.metadata
+            .iter()
+            .filter(|(_, value)| value.show_in_home.unwrap_or(true))
+            .take(9)
             .map(|(key, value)| value.post_meta(key))
             .collect()
     }

@@ -58,13 +58,8 @@ impl Component for Model {
                 </main>
                 <footer class="footer">
                     <div class="content has-text-centered">
-                        { "Powered by " }
-                        <a href="https://yew.rs">{ "Yew" }</a>
-                        { " using " }
-                        <a href="https://bulma.io">{ "Bulma" }</a>
-                        { " and images from " }
-                        <a href="https://unsplash.com">{ "Unsplash" }</a>
-                    </div>
+                        {"Amrit Ghimire, Ranjit"}
+                   </div>
                 </footer>
             </BrowserRouter>
         }
@@ -79,7 +74,11 @@ impl Model {
         html! {
             <nav class="navbar is-dark is-spaced has-shadow" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
-                    <h1 class="navbar-item is-size-3">{ "Amrit Ghimire" }</h1>
+                    <h1 class="navbar-item is-size-3">
+                        <Link<Route> to={Route::Home}>
+                            { "Amrit Ghimire" }
+                        </Link<Route>>
+                    </h1>
 
                     <button class={classes!("navbar-burger", "burger", active_class)}
                         aria-label="menu" aria-expanded="false"

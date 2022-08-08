@@ -15,6 +15,8 @@ pub enum Route {
     Post { slug: String },
     #[at("/posts")]
     Posts,
+    #[at("/category/:category")]
+    Category { category: String },
     #[at("/")]
     Home,
     #[not_found]
@@ -94,17 +96,12 @@ impl Model {
                         <Link<Route> classes={classes!("navbar-item")} to={Route::Home}>
                             { "Home" }
                         </Link<Route>>
-                        <Link<Route> classes={classes!("navbar-item")} to={Route::Posts}>
-                            { "Blog" }
+                        <Link<Route> classes={classes!("navbar-item")} to={Route::Category{category: "literature".to_string()}}>
+                            { "Literature" }
                         </Link<Route>>
-
-                        <div class="navbar-item has-dropdown is-hoverable">
-                            <div class="navbar-link">
-                                { "More" }
-                            </div>
-                            <div class="navbar-dropdown">
-                            </div>
-                        </div>
+                        <Link<Route> classes={classes!("navbar-item")} to={Route::Category{category: "tech".to_string()}}>
+                            { "Tech" }
+                        </Link<Route>>
                     </div>
                 </div>
             </nav>
@@ -114,18 +111,11 @@ impl Model {
 
 fn switch(routes: &Route) -> Html {
     match routes.clone() {
-        Route::Post { slug } => {
-            html! { <Post slug={slug} /> }
-        }
-        Route::Posts => {
-            html! { <PostList /> }
-        }
-        Route::Home => {
-            html! { <Home /> }
-        }
-        Route::NotFound => {
-            html! { <PageNotFound /> }
-        }
+        Route::Post { slug } => return html! { <Post slug={slug} /> },
+        Route::Posts => return html! { <PostList /> },
+        Route::Home => return html! { <Home /> },
+        Route::NotFound => return html! { <PageNotFound /> },
+        Route::Category { category } => return html! { <PostList category={Some(category)} /> },
     }
 }
 

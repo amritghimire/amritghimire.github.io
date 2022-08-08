@@ -19,6 +19,7 @@ struct MetadataJson {
     image_url: Option<String>,
     excerpt: Option<String>,
     show_in_home: Option<bool>,
+    created_at: String,
 }
 
 impl MetadataJson {
@@ -28,8 +29,9 @@ impl MetadataJson {
             category: self.category.clone(),
             slug: String::from(slug),
             excerpt: self.excerpt.clone().unwrap_or_else(|| String::from("")),
-            image_url: self.image_url.clone().unwrap_or_else(|| String::from("")),
+            image_url: self.image_url.clone(),
             show_in_home: self.show_in_home.unwrap_or(true),
+            created_at: self.created_at.clone(),
             keywords: self
                 .keywords
                 .clone()
@@ -58,7 +60,14 @@ impl PostGenerator {
         }
     }
 
-    pub fn size(&self) -> usize {
+    pub fn size(&self, category: Option<String>) -> usize {
+        if let Some(category) = category {
+            return self
+                .metadata
+                .values()
+                .filter(|meta| meta.category.to_lowercase() == category.to_lowercase())
+                .count();
+        }
         self.metadata.len()
     }
 
@@ -94,26 +103,37 @@ impl PostGenerator {
         None
     }
 
-    pub fn get_posts(&self, page: usize) -> Vec<PostMeta> {
+    pub fn get_posts(&self, page: usize, category: Option<String>) -> Vec<PostMeta> {
         let mut skip_count = (page - 1) * 10;
         if skip_count > 0 {
             skip_count -= 1;
         }
-        self.metadata
+        let mut posts: Vec<PostMeta> = self
+            .metadata
             .iter()
-            .skip(skip_count)
-            .take(10)
             .map(|(key, value)| value.post_meta(key))
-            .collect()
+            .collect();
+        if let Some(category) = category {
+            posts = posts
+                .into_iter()
+                .filter(|it| it.category.to_lowercase() == category.to_lowercase())
+                .collect();
+        }
+        posts.sort();
+        posts.reverse();
+        posts.into_iter().skip(skip_count).take(10).collect()
     }
 
     pub fn get_posts_for_home(&self) -> Vec<PostMeta> {
-        self.metadata
+        let mut posts: Vec<PostMeta> = self
+            .metadata
             .iter()
             .filter(|(_, value)| value.show_in_home.unwrap_or(true))
-            .take(9)
             .map(|(key, value)| value.post_meta(key))
-            .collect()
+            .collect();
+        posts.sort();
+        posts.reverse();
+        posts.into_iter().take(9).collect()
     }
 }
 

@@ -5,9 +5,9 @@ use personal_frontend::posts;
 fn post_generator() {
     let post_generator = posts::PostGenerator::new();
 
-    let total_pages = post_generator.size() / ITEMS_PER_PAGE + 1;
+    let total_pages = post_generator.size(None) / ITEMS_PER_PAGE + 1;
     for page in 1..total_pages {
-        let posts = post_generator.get_posts(page);
+        let posts = post_generator.get_posts(page, None);
         assert_ne!(posts.len(), 0);
 
         for meta in posts.iter() {

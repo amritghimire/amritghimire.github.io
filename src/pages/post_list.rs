@@ -7,6 +7,11 @@ use yew_router::prelude::*;
 
 pub const ITEMS_PER_PAGE: usize = 10;
 
+#[derive(Clone, Debug, Eq, PartialEq, Properties)]
+pub struct Props {
+    pub category: Option<String>,
+}
+
 pub enum Msg {
     PageUpdated,
 }
@@ -15,6 +20,7 @@ pub struct PostList {
     page: usize,
     generator: PostGenerator,
     _listener: HistoryListener,
+    category: Option<String>,
 }
 
 fn current_page(ctx: &Context<PostList>) -> usize {
@@ -25,7 +31,7 @@ fn current_page(ctx: &Context<PostList>) -> usize {
 
 impl Component for PostList {
     type Message = Msg;
-    type Properties = ();
+    type Properties = Props;
 
     fn create(ctx: &Context<Self>) -> Self {
         let link = ctx.link().clone();
@@ -33,11 +39,14 @@ impl Component for PostList {
             link.send_message(Msg::PageUpdated);
         });
         let generator = PostGenerator::new();
+        let page = current_page(ctx);
+        let category: Option<String> = ctx.props().category.clone();
 
         Self {
-            page: current_page(ctx),
+            page,
             _listener: listener,
             generator,
+            category,
         }
     }
 
@@ -48,18 +57,33 @@ impl Component for PostList {
         true
     }
 
+    fn changed(&mut self, ctx: &Context<Self>) -> bool {
+        self.category = ctx.props().category.clone();
+        true
+    }
+
     fn view(&self, ctx: &Context<Self>) -> Html {
         let page = self.page;
+        let title = if let Some(c) = &self.category {
+            c.clone()
+        } else {
+            "All Posts".to_string()
+        };
+
+        let route_to_page = if let Some(category) = self.category.clone() {
+            Route::Category { category }
+        } else {
+            Route::Posts
+        };
 
         html! {
             <div class="section container">
-                <h1 class="title">{ "Posts" }</h1>
-                <h2 class="subtitle">{ "All of our quality writing in one place" }</h2>
+                <h1 class="title is-capitalized">{ title }</h1>
                 { self.view_posts(ctx) }
                 <Pagination
                     {page}
-                    total_pages={self.generator.size() / ITEMS_PER_PAGE + 1}
-                    route_to_page={Route::Posts}
+                    total_pages={self.generator.size(self.category.clone()) / ITEMS_PER_PAGE + 1}
+                    route_to_page={route_to_page}
                 />
             </div>
         }
@@ -67,25 +91,24 @@ impl Component for PostList {
 }
 impl PostList {
     fn view_posts(&self, _ctx: &Context<Self>) -> Html {
-        let posts = self.generator.get_posts(self.page);
+        let posts = self.generator.get_posts(self.page, self.category.clone());
+
         let mut cards = posts.iter().map(|post| {
             html! {
-                <li class="list-item mb-5">
+                <li class="tile is-child is-12">
                     <PostCard slug={post.slug.clone()} />
                 </li>
             }
         });
         html! {
-            <div class="columns">
-                <div class="column">
-                    <ul class="list">
+            <div class="container">
+            <div class="tile is-ancestor">
+                    <div class="tile is-parent is-vertical">
                         { for cards.by_ref().take(ITEMS_PER_PAGE as usize / 2) }
-                    </ul>
-                </div>
-                <div class="column">
-                    <ul class="list">
+                    </div>
+                    <div class="tile is-parent is-vertical">
                         { for cards }
-                    </ul>
+                    </div>
                 </div>
             </div>
         }

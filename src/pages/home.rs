@@ -1,9 +1,11 @@
 use stylist::{style, Style};
 use yew::prelude::*;
+use yew_router::prelude::*;
 
 use crate::components::post_card::PostCard;
 use crate::personal::generator::Generator;
 use crate::posts::PostGenerator;
+use crate::Route;
 
 pub struct Home {
     generator: Generator,
@@ -72,7 +74,7 @@ impl Home {
 
     fn view_blogs(&self) -> Html {
         let posts = self.post_generator.get_posts_for_home();
-        let cards = posts.iter().map(|post| {
+        let mut cards = posts.iter().map(|post| {
             html! {
                 <li class="tile is-child is-4">
                     <PostCard slug={post.slug.clone()} />
@@ -85,10 +87,23 @@ impl Home {
             <div class="container">
                 <h1 class="title content has-text-centered">{"Some posts so far.."}</h1>
                 <div class="tile is-ancestor">
-                <div class="tile is-parent is-12 ">
-                    { for cards }
+                    <div class="tile is-parent">
+                        { for cards.by_ref().take(3) }
+                    </div>
                 </div>
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent">
+                        { for cards.by_ref().take(3) }
+                    </div>
                 </div>
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent">
+                        { for cards.by_ref().take(3) }
+                    </div>
+                </div>
+                <Link<Route> classes={classes!("is-centered", "is-text-centered")} to={Route::Posts}>
+                    <button class="button is-large my-3 px-6">{ "View more..." }</button>
+                </Link<Route>>
             </div>
             </section>
         };

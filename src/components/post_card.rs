@@ -11,6 +11,17 @@ pub struct PostCard {
     generator: PostGenerator,
     post: Option<PostMeta>,
 }
+
+impl PostCard {
+    fn post_excerpt(&self, excerpt: String) -> Html {
+        excerpt
+            .split("\r\n")
+            .take(5)
+            .map(|e| html! {<>{e}<br/></>})
+            .collect()
+    }
+}
+
 impl Component for PostCard {
     type Message = ();
     type Properties = Props;
@@ -28,19 +39,42 @@ impl Component for PostCard {
 
     fn view(&self, _ctx: &Context<Self>) -> Html {
         if let Some(post) = &self.post {
+            let keywords = post.keywords.iter().map(
+                |keyword| html! { <span class="tag is-info is-capitalized">{ keyword }</span> },
+            );
             return html! {
-                <div class="card">
-                    <div class="card-image">
-                        <figure class="image is-2by1">
-                            <img alt="This post's image" src={post.image_url.clone()} loading="lazy" />
-                        </figure>
+                <>
+                <Link<Route> to={Route::Post { slug: post.slug.clone() }}>
+                    <div class="card mx-3">
+                        <div class="card-header">
+                            <div class="card-header-title">
+                                <Link<Route> classes={classes!("title", "is-block")} to={Route::Post { slug: post.slug.clone() }}>
+                                    { &post.title }
+                                </Link<Route>>
+                            </div>
+                        </div>
+                        {
+                            if let Some(image_url) = &post.image_url {
+                                html! {
+                                    <div class="card-image">
+                                        <figure class="image is-2by1">
+                                            <img src={image_url.clone()} alt={post.title.clone()} loading="lazy"/>
+                                        </figure>
+                                    </div>
+                                }
+                            } else {
+                                html! {}
+                            }
+                        }
+                        <div class="card-content">
+                            <div class="content">
+                                { self.post_excerpt(post.excerpt.clone()) }
+                            </div>
+                            {for keywords}
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <Link<Route> classes={classes!("title", "is-block")} to={Route::Post { slug: post.slug.clone() }}>
-                            { &post.title }
-                        </Link<Route>>
-                    </div>
-                </div>
+                </Link<Route>>
+                </>
             };
         } else {
             return html! {};

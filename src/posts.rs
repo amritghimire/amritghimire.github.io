@@ -18,7 +18,7 @@ struct MetadataJson {
     keywords: Option<String>,
     image_url: Option<String>,
     excerpt: Option<String>,
-    show_in_home: Option<bool>
+    show_in_home: Option<bool>,
 }
 
 impl MetadataJson {

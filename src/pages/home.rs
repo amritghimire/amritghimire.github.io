@@ -1,13 +1,13 @@
 use stylist::{style, Style};
 use yew::prelude::*;
 
+use crate::components::post_card::PostCard;
 use crate::personal::generator::Generator;
 use crate::posts::PostGenerator;
-use crate::components::post_card::PostCard;
 
-pub struct Home{
+pub struct Home {
     generator: Generator,
-    post_generator: PostGenerator
+    post_generator: PostGenerator,
 }
 impl Component for Home {
     type Message = ();
@@ -19,7 +19,7 @@ impl Component for Home {
 
         Self {
             generator,
-            post_generator
+            post_generator,
         }
     }
 
@@ -46,7 +46,7 @@ impl Component for Home {
                     { self.view_contact() }
                 </div>
             </div>
-        }
+        };
     }
 }
 impl Home {
@@ -67,7 +67,7 @@ impl Home {
             </div>
           </div>
         </section>
-        }
+        };
     }
 
     fn view_blogs(&self) -> Html {
@@ -91,37 +91,37 @@ impl Home {
                 </div>
             </div>
             </section>
-        }
+        };
     }
 
     fn view_experiences(&self) -> Html {
         return html! {
             <section class="section"></section>
-        }
+        };
     }
 
     fn view_projects(&self) -> Html {
         return html! {
             <section class="section"></section>
-        }
+        };
     }
 
     fn view_education(&self) -> Html {
         return html! {
             <section class="section"></section>
-        }
+        };
     }
 
     fn view_certifications(&self) -> Html {
         return html! {
             <section class="section"></section>
-        }
+        };
     }
 
     fn view_contact(&self) -> Html {
         return html! {
             <section class="section"></section>
-        }
+        };
     }
 }
 

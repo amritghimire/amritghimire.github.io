@@ -5,9 +5,8 @@ use yew_router::prelude::*;
 use crate::components::post_card::PostCard;
 use crate::personal::generator::Generator;
 use crate::posts::PostGenerator;
-use crate::Route;
 use crate::utils::line_breaks;
-
+use crate::Route;
 
 pub struct Home {
     generator: Generator,
@@ -32,10 +31,10 @@ impl Component for Home {
             <div>
                 { self.view_intro() }
                 <div class="container">
-                    { self.view_blogs() }
+                    { self.view_experiences() }
                 </div>
                 <div class="container">
-                    { self.view_experiences() }
+                    { self.view_blogs() }
                 </div>
                 <div class="container">
                     { self.view_projects() }
@@ -62,11 +61,14 @@ impl Home {
             </figure>
           <div class="hero-body">
             <div class="container has-text-centered">
+              <p class="subtitle is-size-2">
+                {&self.generator.website().pre_intro}
+              </p>
               <p class="title is-size-1">
               {"Amrit Ghimire, Ranjit"}
               </p>
               <p class="subtitle is-size-2">
-              {&self.generator.website().intro}
+                {&self.generator.website().post_intro}
               </p>
             </div>
           </div>
@@ -87,7 +89,7 @@ impl Home {
         return html! {
             <section class="section">
             <div class="container">
-                <h1 class="title content has-text-centered">{"Some posts so far.."}</h1>
+                <h1 class="title content has-text-centered">{"Few of my attempts.."}</h1>
                 <div class="tile is-ancestor">
                     <div class="tile is-parent">
                         { for cards.by_ref().take(3) }
@@ -162,26 +164,127 @@ impl Home {
     }
 
     fn view_projects(&self) -> Html {
+        let projects = self.generator.projects();
+        let cards = projects.iter().map(|project| {
+            html! {
+                <div class="column is-6">
+                  <div class="box">
+                    <div class="columns">
+                        <div class="column">
+                            <a href={project.link.clone()}><span class="title" target="_blank">{&project.title}</span></a>
+                            <span class="tag is-dark is-rounded ml-3">{&project.language}</span>
+                        </div>
+                    </div>
+                    <div class="columns">
+                        <div class="column">
+                            <p class="content">{line_breaks(&project.description, 5)}</p>
+                        </div>
+                    </div>
+                    <div class="columns">
+                        <div class="column">
+                            <div class="tags">
+                                {project.tags.iter().map(|tag| {
+                                    html! {
+                                        <span class="tag is-light is-rounded">{tag}</span>
+                                    }
+                                }).collect::<Html>()}
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            }
+        });
         return html! {
-            <section class="section"></section>
+            <section class="section">
+                <div class="container">
+                  <h1 class="title content has-text-centered mb-6">{"Notable Projects"}</h1>
+                  <div class="columns" style="flex-wrap: wrap;">
+                    { for cards }
+                  </div>
+                </div>
+
+            </section>
         };
     }
 
     fn view_education(&self) -> Html {
+        let education = self.generator.education();
+        let cards = education.iter().map(|e| {
+            html! {
+                <div>
+                    <strong>{&e.institute}</strong><small>{" ("}{&e.start}{"-"}{&e.end}{")"}</small><br/>
+                    <span class="mr-2">{&e.title}</span><strong><u>{&e.subject}</u></strong>
+                </div>
+            }
+        });
+
         return html! {
-            <section class="section"></section>
+            <section class="section">
+                <div class="container">
+                  <h1 class="title content has-text-centered mb-6">{"Education"}</h1>
+                  <div class="has-text-centered">
+                    { for cards }
+                  </div>
+                </div>
+            </section>
         };
     }
 
     fn view_certifications(&self) -> Html {
+        let certification = self.generator.certifications();
+        let cards = certification.iter().map(|c| {
+            html! {
+                <div>
+                    <a class="link" target="_blank" href={c.link.clone()}>{&c.title}</a>
+                    <span class="mx-2">{&c.issuer}</span><small>{"("}{&c.issued_at}{")"}</small>
+                </div>
+            }
+        });
+
         return html! {
-            <section class="section"></section>
+            <section class="section">
+                <div class="container">
+                  <h1 class="title content has-text-centered mb-6">{"Certifications"}</h1>
+                  <div class="has-text-centered">
+                    { for cards }
+                  </div>
+                </div>
+            </section>
         };
     }
 
     fn view_contact(&self) -> Html {
         return html! {
-            <section class="section"></section>
+            <section class="section">
+                <div class="container">
+                  <h1 class="title content has-text-centered mb-6">{"Find me at"}</h1>
+                    <div class="columns is-centered">
+                      <div class="column is-half">
+                          <div class="buttons" style="justify-content:center;">
+                            <a  class="button is-info" href={self.generator.website().github.clone()}>
+                                <span class="icon">
+                                  <i class="fab fa-github"></i>
+                                </span>
+                                <span>{"Github"}</span>
+                            </a>
+                            <a  class="button is-info" href={self.generator.website().linkedin.clone()}>
+                                <span class="icon">
+                                  <i class="fab fa-linkedin"></i>
+                                </span>
+                                <span>{"LinkedIn"}</span>
+                            </a>
+                            <a  class="button is-info" href={self.generator.website().email.clone()}>
+                                <span class="icon">
+                                  <i class="fab fa-envelope"></i>
+                                </span>
+                                <span>{"Email"}</span>
+                            </a>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </section>
         };
     }
 }

@@ -1,7 +1,7 @@
+use crate::utils::line_breaks;
 use crate::{content::PostMeta, posts::PostGenerator, Route};
 use yew::prelude::*;
 use yew_router::components::Link;
-use crate::utils::line_breaks;
 
 #[derive(Clone, Debug, PartialEq, Properties)]
 pub struct Props {

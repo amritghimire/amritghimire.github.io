@@ -1,7 +1,10 @@
 {
  "website": {
-  "intro": "I am a software engineer at Iterative.ai",
-  "linkedin": "https://www.linkedin.com/in/iamritghimire/"
+  "pre_intro": "Hi there, I'm",
+  "post_intro": "",
+  "linkedin": "https://www.linkedin.com/in/iamritghimire/",
+  "github": "https://github.com/amritghimire",
+  "email": "mailto:contact_me@amritghimire.com"
  },
  "experiences": [
   {

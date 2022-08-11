@@ -1,6 +1,6 @@
-use yew::{Html, html};
+use yew::{html, Html};
 
-pub fn line_breaks(excerpt: &String, lines: usize) -> Html {
+pub fn line_breaks(excerpt: &str, lines: usize) -> Html {
     excerpt
         .lines()
         .take(lines)

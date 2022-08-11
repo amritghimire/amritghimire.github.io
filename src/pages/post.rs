@@ -28,16 +28,14 @@ impl Component for Post {
 
     fn view(&self, _ctx: &Context<Self>) -> Html {
         if let Some(post) = &self.post {
-            let keywords = post
-                .meta
-                .keywords
-                .iter()
-                .map(|keyword| html! { <span class="tag is-info">{ keyword }</span> });
+            let keywords = post.meta.keywords.iter().map(
+                |keyword| html! { <span class="tag is-info  is-capitalized">{ keyword }</span> },
+            );
 
-            html! {
+            return html! {
                 <>
-                    <section class="hero is-medium is-light has-background">
-                        <img alt="The hero's background" class="hero-background is-transparent" src={post.meta.image_url.clone()} />
+                    <section class="hero is-small is-light has-background">
+                        <img class="hero-background is-transparent" src={post.meta.image_url.clone()} />
                         <div class="hero-body">
                             <div class="container">
                                 <h1 class="title">
@@ -50,15 +48,21 @@ impl Component for Post {
                         </div>
                     </section>
                     <div class="section container">
-                        <SafeHtml html={post.content.clone()} />
+                        <div class="columns is-centered">
+                          <div class="column is-half">
+                            <p class="content has-text-centered has-text-weight-semibold is-size-5">
+                                <SafeHtml html={post.content.clone()} />
+                            </p>
+                          </div>
+                        </div>
                     </div>
                 </>
-            }
+            };
         } else {
-            html! {
+            return html! {
                     <Redirect<Route> to={Route::NotFound}/>
 
-            }
+            };
         }
     }
 }

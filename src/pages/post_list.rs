@@ -38,6 +38,7 @@ impl Component for PostList {
         let listener = ctx.link().history().unwrap().listen(move || {
             link.send_message(Msg::PageUpdated);
         });
+
         let generator = PostGenerator::new();
         let page = current_page(ctx);
         let category: Option<String> = ctx.props().category.clone();

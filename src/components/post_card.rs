@@ -3,7 +3,7 @@ use crate::{content::PostMeta, posts::PostGenerator, Route};
 use yew::prelude::*;
 use yew_router::components::Link;
 
-#[derive(Clone, Debug, PartialEq, Properties)]
+#[derive(Clone, Debug, PartialEq, Eq, Properties)]
 pub struct Props {
     pub slug: String,
 }
@@ -33,7 +33,7 @@ impl Component for PostCard {
             let keywords = post.keywords.iter().map(
                 |keyword| html! { <span class="tag is-info is-capitalized">{ keyword }</span> },
             );
-            return html! {
+            html! {
                 <>
                 <Link<Route> to={Route::Post { slug: post.slug.clone() }}>
                     <div class="card mx-3">
@@ -66,9 +66,9 @@ impl Component for PostCard {
                     </div>
                 </Link<Route>>
                 </>
-            };
+            }
         } else {
-            return html! {};
+            html! {}
         }
     }
 }

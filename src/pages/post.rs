@@ -32,7 +32,7 @@ impl Component for Post {
                 |keyword| html! { <span class="tag is-info  is-capitalized">{ keyword }</span> },
             );
 
-            return html! {
+            html! {
                 <>
                     <section class="hero is-small is-light has-background">
                         <img class="hero-background is-transparent" src={post.meta.image_url.clone()} />
@@ -57,12 +57,11 @@ impl Component for Post {
                         </div>
                     </div>
                 </>
-            };
+            }
         } else {
-            return html! {
+            html! {
                     <Redirect<Route> to={Route::NotFound}/>
-
-            };
+            }
         }
     }
 }

@@ -67,7 +67,7 @@ impl PostGenerator {
                 .values()
                 .filter(|meta| meta.category.to_lowercase() == category.to_lowercase())
                 .count();
-        }
+        };
         self.metadata.len()
     }
 

@@ -1,6 +1,6 @@
 use yew::{function_component, Html, Properties};
 
-#[derive(Properties, PartialEq)]
+#[derive(Properties, PartialEq, Eq)]
 pub struct Props {
     pub html: String,
 }

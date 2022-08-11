@@ -27,7 +27,7 @@ impl Component for Home {
     }
 
     fn view(&self, _ctx: &Context<Self>) -> Html {
-        return html! {
+        html! {
             <div>
                 { self.view_intro() }
                 <div class="container">
@@ -49,12 +49,12 @@ impl Component for Home {
                     { self.view_contact() }
                 </div>
             </div>
-        };
+        }
     }
 }
 impl Home {
     fn view_intro(&self) -> Html {
-        return html! {
+        html! {
         <section class={classes!("hero","is-link","is-fullheight-with-navbar", self.intro_style())}>
             <figure class="image is-fullwidth hero-background is-transparent">
                 <img alt="Fill Murray" src="/img/amrit.png" />
@@ -73,7 +73,7 @@ impl Home {
             </div>
           </div>
         </section>
-        };
+        }
     }
 
     fn view_blogs(&self) -> Html {
@@ -86,7 +86,7 @@ impl Home {
             }
         });
 
-        return html! {
+        html! {
             <section class="section">
             <div class="container">
                 <h1 class="title content has-text-centered">{"Few of my attempts.."}</h1>
@@ -110,7 +110,7 @@ impl Home {
                 </Link<Route>>
             </div>
             </section>
-        };
+        }
     }
 
     fn view_experiences(&self) -> Html {
@@ -139,7 +139,7 @@ impl Home {
             }
         });
 
-        return html! {
+        html! {
             <section class="section">
                 <div class="container">
                     <h1 class="title content has-text-centered mb-6">{"Some of my journey"}</h1>
@@ -160,7 +160,7 @@ impl Home {
                     </div>
                 </div>
             </section>
-        };
+        }
     }
 
     fn view_projects(&self) -> Html {
@@ -195,7 +195,7 @@ impl Home {
                 </div>
             }
         });
-        return html! {
+        html! {
             <section class="section">
                 <div class="container">
                   <h1 class="title content has-text-centered mb-6">{"Notable Projects"}</h1>
@@ -205,7 +205,7 @@ impl Home {
                 </div>
 
             </section>
-        };
+        }
     }
 
     fn view_education(&self) -> Html {
@@ -219,7 +219,7 @@ impl Home {
             }
         });
 
-        return html! {
+        html! {
             <section class="section">
                 <div class="container">
                   <h1 class="title content has-text-centered mb-6">{"Education"}</h1>
@@ -228,7 +228,7 @@ impl Home {
                   </div>
                 </div>
             </section>
-        };
+        }
     }
 
     fn view_certifications(&self) -> Html {
@@ -242,7 +242,7 @@ impl Home {
             }
         });
 
-        return html! {
+        html! {
             <section class="section">
                 <div class="container">
                   <h1 class="title content has-text-centered mb-6">{"Certifications"}</h1>
@@ -251,11 +251,11 @@ impl Home {
                   </div>
                 </div>
             </section>
-        };
+        }
     }
 
     fn view_contact(&self) -> Html {
-        return html! {
+        html! {
             <section class="section">
                 <div class="container">
                   <h1 class="title content has-text-centered mb-6">{"Find me at"}</h1>
@@ -285,7 +285,7 @@ impl Home {
                     </div>
                 </div>
             </section>
-        };
+        }
     }
 }
 

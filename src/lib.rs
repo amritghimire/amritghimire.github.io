@@ -11,7 +11,7 @@ pub mod utils;
 use pages::{home::Home, page_not_found::PageNotFound, post::Post, post_list::PostList};
 use yew::html::Scope;
 
-#[derive(Routable, PartialEq, Clone, Debug)]
+#[derive(Routable, PartialEq, Eq, Clone, Debug)]
 pub enum Route {
     #[at("/posts/:slug")]
     Post { slug: String },
@@ -115,11 +115,11 @@ impl Model {
 
 fn switch(routes: &Route) -> Html {
     match routes.clone() {
-        Route::Post { slug } => return html! { <Post slug={slug} /> },
-        Route::Posts => return html! { <PostList /> },
-        Route::Home => return html! { <Home /> },
-        Route::NotFound => return html! { <PageNotFound /> },
-        Route::Category { category } => return html! { <PostList category={Some(category)} /> },
+        Route::Post { slug } => html! { <Post slug={slug} /> },
+        Route::Posts => html! { <PostList /> },
+        Route::Home => html! { <Home /> },
+        Route::NotFound => html! { <PageNotFound /> },
+        Route::Category { category } => html! { <PostList category={Some(category)} /> },
     }
 }
 

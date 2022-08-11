@@ -6,6 +6,8 @@ use crate::components::post_card::PostCard;
 use crate::personal::generator::Generator;
 use crate::posts::PostGenerator;
 use crate::Route;
+use crate::utils::line_breaks;
+
 
 pub struct Home {
     generator: Generator,
@@ -110,8 +112,52 @@ impl Home {
     }
 
     fn view_experiences(&self) -> Html {
+        let experiences = self.generator.experiences();
+        let cards = experiences.iter().map(|experience| {
+            html! {
+                <article class="media is-flex-mobile is-flex-wrap-wrap-mobile">
+                  <figure class="media-left">
+                    <p class="image is-64x64 mx-3">
+                      <img src={experience.logo.clone()} />
+                    </p>
+                  </figure>
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <strong class="mr-2">{&experience.company} </strong>
+                        <small>{&experience.location.clone().unwrap_or_default()} </small>
+                         <small>{" ("}{&experience.start}{"-"}{&experience.end}{")"}</small>
+                        <br/>
+                        <strong class="is-large"><u>{&experience.title}</u></strong><br/>
+                        <p class="content mt-2">{line_breaks(&experience.description, 50)}</p>
+                      </p>
+                    </div>
+                  </div>
+                </article>
+            }
+        });
+
         return html! {
-            <section class="section"></section>
+            <section class="section">
+                <div class="container">
+                    <h1 class="title content has-text-centered mb-6">{"Some of my journey"}</h1>
+                    <div class="columns is-centered">
+                      <div class="column is-half">
+                        <p class="bd-notification is-primary">
+                          {for cards}
+                        </p>
+                        <div class="divider"></div>
+                        <div class="columns is-centered">
+                          <div class="column is-half">
+                            <p class="bd-notification is-primary">
+                                <a style="display:block;" target="_blank" class="link centered-link ml-6 mt-4" href={self.generator.website().linkedin.clone()}>{"View more on LinkedIn"}</a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </section>
         };
     }
 

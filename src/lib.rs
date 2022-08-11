@@ -6,6 +6,8 @@ mod content;
 pub mod pages;
 pub mod personal;
 pub mod posts;
+pub mod utils;
+
 use pages::{home::Home, page_not_found::PageNotFound, post::Post, post_list::PostList};
 use yew::html::Scope;
 
@@ -37,7 +39,7 @@ impl Component for Model {
 
     fn create(_ctx: &Context<Self>) -> Self {
         Self {
-            navbar_active: false,
+            navbar_active: true,
         }
     }
 
@@ -60,7 +62,7 @@ impl Component for Model {
                 </main>
                 <footer class="footer">
                     <div class="content has-text-centered">
-                        {"Amrit Ghimire, Ranjit"}
+                        {"Developed completely in Rust | Amrit Ghimire, Ranjit "}
                    </div>
                 </footer>
             </BrowserRouter>
@@ -78,7 +80,7 @@ impl Model {
                 <div class="navbar-brand">
                     <h1 class="navbar-item is-size-3">
                         <Link<Route> to={Route::Home}>
-                            { "Amrit Ghimire" }
+                            <span class="has-text-white">{ "Amrit Ghimire" }</span>
                         </Link<Route>>
                     </h1>
 

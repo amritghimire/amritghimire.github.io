@@ -1,6 +1,7 @@
 {
  "website": {
-  "intro": "I am a software engineer at Iterative.ai"
+  "intro": "I am a software engineer at Iterative.ai",
+  "linkedin": "https://www.linkedin.com/in/iamritghimire/"
  },
  "experiences": [
   {
@@ -9,29 +10,35 @@
    "start": "Dec 2021",
    "end": "Present",
    "description": "Responsible for BE of custom gitlab integration, billing and model registry in Iterative Studio",
-   "location": "Remote"
+   "location": "Remote",
+   "logo": "/img/experiences/iterative.jpg"
   },
   {
    "title": "Programme/Software Developer",
    "company": "Johnson Care Group",
    "start": "Jun 2018",
    "end": "Present",
-   "description": "Responsible for developing and maintaining the web-based \napplications to record and manage day-to-day activities in Care homes under Johnson Care Group.\n● Executed multiple projects for the company with my team of 3.\n● Successful maintenance of 2 different servers using DigitalOcean cloud infrastructure for projects.\n● Introduced a SaaS system along with backup jobs using multiple tech stacks.",
-   "location": " 57- 59 Avenue Road Westcliff-on-Sea Essex SS0 7PJ"
+   "description": "Responsible for developing and maintaining the web-based applications to record and manage day-to-day activities in Care homes under Johnson Care Group.\n\n● Executed multiple projects for the company with my team of 3.\n● Successful maintenance of 2 different servers using DigitalOcean cloud infrastructure for projects.\n● Introduced a SaaS system along with backup jobs using multiple tech stacks.",
+   "location": " 57- 59 Avenue Road Westcliff-on-Sea Essex SS0 7PJ",
+   "logo": "/img/experiences/johnsoncare.png"
   },
   {
    "title": "Senior Software Engineer",
    "company": "Leapfrog Technology, Inc",
    "start": "Jan 2021",
    "end": "Nov 2021",
-   "description": "Promoted to lead and integrate multiple modules of a project. Responsible for\nanalyzing the requirement, researching for the feasibility, defining the optimal solutions and leading the\nteam to develop and present the project to the client. Built technical, communication and leadership skills\nwhile working as a tech lead for the project.\n● Instrumental in managing a team of 11-25 members through the completion of a project.\n● Guided the team with optimal solutions to approach various requirements within the project.\n● Provided support and reviews for 5+ projects and modules within the company."
+   "location": "Kathmandu, Nepal",
+   "logo": "/img/experiences/leapfrog.jpg",
+   "description": "Promoted to lead and integrate multiple modules of a project. Responsible for analyzing the requirement, researching for the feasibility, defining the optimal solutions and leading the team to develop and present the project to the client. Built technical, communication and leadership skills while working as a tech lead for the project.\n\n● Instrumental in managing a team of 11-25 members through the completion of a project.\n● Guided the team with optimal solutions to approach various requirements within the project.\n● Provided support and reviews for 5+ projects and modules within the company."
   },
   {
    "title": "Software Engineer",
    "company": "Leapfrog Technology, Inc",
    "start": "Nov 2019",
    "end": "Jan 2021",
-   "description": "Worked with multiple teams to successfully develop and deliver projects within the\ncompany. Learned about the AWS ecosystem, Java Based backend development and web\ncomponent-based frontend development using Javascript while working as a software engineer."
+   "location": "Kathmandu, Nepal",
+   "logo": "/img/experiences/leapfrog.jpg",
+   "description": "Worked with multiple teams to successfully develop and deliver projects within the company. Learned about the AWS ecosystem, Java Based backend development and web component-based frontend development using Javascript while working as a software engineer."
   }
  ],
  "projects": [

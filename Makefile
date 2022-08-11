@@ -1,6 +1,6 @@
 .PHONY: serve
 serve:
-	trunk serve
+	trunk serve --open --address 0.0.0.0
 
 .PHONY: build
 build:

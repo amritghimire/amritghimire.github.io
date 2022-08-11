@@ -3,6 +3,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Serialize, Deserialize)]
 pub struct Website {
     pub intro: String,
+    pub linkedin: String
 }
 
 #[derive(Serialize, Deserialize)]
@@ -13,6 +14,7 @@ pub struct Experience {
     pub end: String,
     pub description: String,
     pub location: Option<String>,
+    pub logo: String
 }
 
 #[derive(Serialize, Deserialize)]

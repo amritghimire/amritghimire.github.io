@@ -1,6 +1,7 @@
 use crate::{content::PostMeta, posts::PostGenerator, Route};
 use yew::prelude::*;
 use yew_router::components::Link;
+use crate::utils::line_breaks;
 
 #[derive(Clone, Debug, PartialEq, Properties)]
 pub struct Props {
@@ -10,16 +11,6 @@ pub struct Props {
 pub struct PostCard {
     generator: PostGenerator,
     post: Option<PostMeta>,
-}
-
-impl PostCard {
-    fn post_excerpt(&self, excerpt: String) -> Html {
-        excerpt
-            .split("\r\n")
-            .take(5)
-            .map(|e| html! {<>{e}<br/></>})
-            .collect()
-    }
 }
 
 impl Component for PostCard {
@@ -68,7 +59,7 @@ impl Component for PostCard {
                         }
                         <div class="card-content">
                             <div class="content">
-                                { self.post_excerpt(post.excerpt.clone()) }
+                                { line_breaks(&post.excerpt.clone(), 5) }
                             </div>
                             {for keywords}
                         </div>

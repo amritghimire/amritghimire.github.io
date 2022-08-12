@@ -24,5 +24,9 @@ test:
 fmt:
 	cargo fmt --all
 
+.PHONY: clean
+clean:
+	cargo clean
+
 .PHONY: all
-all: check test fmt clippy build
+all: clean check test fmt clippy build

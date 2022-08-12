@@ -57,7 +57,7 @@ impl Home {
         html! {
         <section class={classes!("hero","is-link","is-fullheight-with-navbar", self.intro_style())}>
             <figure class="image is-fullwidth hero-background is-transparent">
-                <img alt="Fill Murray" src="/img/amrit.png" />
+                <img decoding="async" loading="lazy" alt="Amrit" src="/img/amrit.webp" />
             </figure>
           <div class="hero-body">
             <div class="container has-text-centered">

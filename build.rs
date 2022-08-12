@@ -1,23 +1,21 @@
+use serde::{Deserialize, Serialize};
+use sitewriter::{UrlEntry, UrlEntryBuilder};
 use std::collections::HashMap;
 use std::error::Error;
 use std::fs::File;
-use sitewriter::{UrlEntry, UrlEntryBuilder};
-use serde::{Deserialize, Serialize};
 
 const METADATA: &str = include_str!("./contents/metadata.json");
 const WEBSITE: &str = "https://amritghimire.com/";
 
-
 #[derive(Serialize, Deserialize)]
 struct MetadataJson {
     created_at: String,
-    category: String
+    category: String,
 }
-
 
 type PostMetadata = HashMap<String, MetadataJson>;
 
-fn main() -> Result<(), Box<dyn Error>>{
+fn main() -> Result<(), Box<dyn Error>> {
     let metadata: PostMetadata = serde_json::from_str(METADATA)?;
     let mut urls = vec![
         UrlEntryBuilder::default()
@@ -25,7 +23,7 @@ fn main() -> Result<(), Box<dyn Error>>{
             .priority(1.0)
             .build()
             .unwrap(),
-        UrlEntry{
+        UrlEntry {
             loc: format!("{}posts/", WEBSITE).parse().unwrap(),
             lastmod: None,
             changefreq: None,
@@ -43,7 +41,10 @@ fn main() -> Result<(), Box<dyn Error>>{
         });
     }
 
-    let mut categories = metadata.values().map(|k| k.category.clone()).collect::<Vec<String>>();
+    let mut categories = metadata
+        .values()
+        .map(|k| k.category.clone())
+        .collect::<Vec<String>>();
     categories.sort();
     categories.dedup();
 

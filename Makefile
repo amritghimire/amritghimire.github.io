@@ -1,9 +1,11 @@
 .PHONY: serve
 serve:
+	cargo build
 	trunk serve --open --address 0.0.0.0
 
 .PHONY: build
 build:
+	cargo build --release
 	trunk build --release
 
 .PHONY: clippy

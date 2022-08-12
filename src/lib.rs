@@ -21,6 +21,8 @@ pub enum Route {
     Category { category: String },
     #[at("/")]
     Home,
+    #[at("/home")]
+    LegacyHome,
     #[not_found]
     #[at("/404")]
     NotFound,
@@ -118,6 +120,7 @@ fn switch(routes: &Route) -> Html {
         Route::Post { slug } => html! { <Post slug={slug} /> },
         Route::Posts => html! { <PostList /> },
         Route::Home => html! { <Home /> },
+        Route::LegacyHome => html! { <Home /> },
         Route::NotFound => html! { <PageNotFound /> },
         Route::Category { category } => html! { <PostList category={Some(category)} /> },
     }

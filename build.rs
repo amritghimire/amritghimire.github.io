@@ -3,6 +3,7 @@ use sitewriter::{UrlEntry, UrlEntryBuilder};
 use std::collections::HashMap;
 use std::error::Error;
 use std::fs::File;
+use std::io::Write;
 
 const METADATA: &str = include_str!("./contents/metadata.json");
 const WEBSITE: &str = "https://amritghimire.com/";
@@ -17,6 +18,7 @@ type PostMetadata = HashMap<String, MetadataJson>;
 
 fn main() -> Result<(), Box<dyn Error>> {
     let metadata: PostMetadata = serde_json::from_str(METADATA)?;
+    let mut url_links = vec![format!("/posts/")];
     let mut urls = vec![
         UrlEntryBuilder::default()
             .loc(WEBSITE.parse().unwrap())
@@ -33,6 +35,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     for (slug, meta) in metadata.iter() {
         let url = format!("{}posts/{}/", WEBSITE, slug);
+        url_links.push(format!("/posts/{}/", slug));
         urls.push(UrlEntry {
             loc: url.parse().unwrap(),
             changefreq: None,
@@ -50,6 +53,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     for category in categories {
         let url = format!("{}category/{}/", WEBSITE, category);
+        url_links.push(format!("/category/{}/", category));
         urls.push(UrlEntry {
             loc: url.parse().unwrap(),
             changefreq: None,
@@ -60,6 +64,11 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let buffer = File::create("sitemap.xml")?;
     sitewriter::generate(buffer, &urls)?;
+    let mut buffer = File::create("sitemap.txt")?;
+    writeln!(buffer, "{}", WEBSITE)?;
+    for link in url_links {
+        writeln!(buffer, "{}?{}", WEBSITE, link)?;
+    }
 
     Ok(())
 }

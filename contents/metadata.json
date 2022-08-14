@@ -178,5 +178,14 @@
         "keywords": "literature",
         "image_url": null,
         "created_at": "2021-02-01T07:29:31-0600"
+    },
+    "rajniti": {
+        "title": "राजनिति अहिले...",
+        "category": "Literature",
+        "file": "literature/rajniti.md",
+        "keywords": "literature",
+        "image_url": null,
+        "created_at": "2022-08-14T22:40:50-0600",
+        "excerpt": "पाँच वर्ष पुरै निदाई, फेरी जाग्दै छ उ।\nझुक्याउन जनतालाई, फेरि लाग्दै छ उ।\n\nसिद्धान्त को राजनीति त हराई गयो हेर,\nडर त्रास घुर्की देखाई ,भोट माग्दै छ उ"
     }
 }

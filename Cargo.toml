@@ -12,23 +12,13 @@ serde_json = "1.0.81"
 
 
 [dependencies]
-instant = { version = "0.1", features = ["wasm-bindgen"] }
-lipsum = "0.8"
-log = "0.4"
-getrandom = { version = "0.2", features = ["js"] }
-rand = { version = "0.8", features = ["small_rng"] }
-wasm-logger = "0.2"
 serde = { version = "1.0", features = ["derive"] }
-lazy_static = "1.4.0"
-gloo-timers = "0.2"
 yew = "0.19.3"
 yew-router = "0.16.0"
 include_dir = "0.7.2"
 pulldown-cmark = "0.9.1"
 serde_json = "1.0.81"
 gloo-utils = "0.1.4"
-web-sys = "0.3.58"
-console_error_panic_hook = "0.1.7"
 wasm-bindgen = "0.2.81"
 stylist = { version = "0.10.1", features = ["yew_integration"] }
 

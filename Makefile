@@ -5,6 +5,7 @@ serve:
 
 .PHONY: build
 build:
+	rm -rfv dist
 	cargo build --release
 	trunk build --release
 
@@ -29,4 +30,4 @@ clean:
 	cargo clean
 
 .PHONY: all
-all: clean check test fmt clippy build
+all: check test fmt clippy build

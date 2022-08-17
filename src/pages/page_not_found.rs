@@ -1,3 +1,4 @@
+use crate::utils::set_title;
 use yew::prelude::*;
 
 pub struct PageNotFound;
@@ -11,6 +12,7 @@ impl Component for PageNotFound {
     }
 
     fn view(&self, _ctx: &Context<Self>) -> Html {
+        set_title("Page Not Found");
         html! {
             <section class="hero is-danger is-bold is-large">
                 <div class="hero-body">

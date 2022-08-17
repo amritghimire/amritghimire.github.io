@@ -1,3 +1,4 @@
+use crate::utils::set_title;
 use crate::{components::safe_html::SafeHtml, content, posts::PostGenerator, Route};
 use yew::prelude::*;
 use yew_router::prelude::*;
@@ -31,6 +32,7 @@ impl Component for Post {
             let keywords = post.meta.keywords.iter().map(
                 |keyword| html! { <span class="tag is-info  is-capitalized">{ keyword }</span> },
             );
+            set_title(&post.meta.title);
 
             html! {
                 <>

@@ -1,6 +1,7 @@
 use crate::components::pagination::PageQuery;
 use crate::components::{pagination::Pagination, post_card::PostCard};
 use crate::posts::PostGenerator;
+use crate::utils::set_title;
 use crate::Route;
 use yew::prelude::*;
 use yew_router::prelude::*;
@@ -70,6 +71,7 @@ impl Component for PostList {
         } else {
             "All Posts".to_string()
         };
+        set_title(&title);
 
         let route_to_page = if let Some(category) = self.category.clone() {
             Route::Category { category }

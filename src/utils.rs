@@ -1,3 +1,4 @@
+use wasm_bindgen::prelude::*;
 use yew::{html, Html};
 
 /// Break a long text with line breaks into html br tags
@@ -21,4 +22,11 @@ pub fn line_breaks(excerpt: &str, lines: usize) -> Html {
         .take(lines)
         .map(|e| html! {<>{e}<br/></>})
         .collect()
+}
+
+#[wasm_bindgen(
+    inline_js = "export function set_title(title) { document.title = title.charAt(0).toUpperCase() + title.slice(1) + ' | Amrit Ghimire, Ranjit'; }"
+)]
+extern "C" {
+    pub fn set_title(title: &str);
 }

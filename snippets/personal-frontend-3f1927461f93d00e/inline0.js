@@ -1,0 +1,1 @@
+export function set_title(title) { document.title = title.charAt(0).toUpperCase() + title.slice(1) + ' | Amrit Ghimire, Ranjit'; }

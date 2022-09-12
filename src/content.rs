@@ -1,3 +1,4 @@
+use chrono::{DateTime, Utc};
 use std::cmp::Ordering;
 use yew::Properties;
 
@@ -10,7 +11,7 @@ pub struct PostMeta {
     pub image_url: Option<String>,
     pub excerpt: String,
     pub show_in_home: bool,
-    pub created_at: String,
+    pub created_at: DateTime<Utc>,
 }
 
 impl Ord for PostMeta {

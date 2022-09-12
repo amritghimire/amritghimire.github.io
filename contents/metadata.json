@@ -6,7 +6,7 @@
         "file": "literature/parkhai.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2022-03-05T09:42:20-0600"
+        "created_at": "2022-03-05T09:42:20+0545"
     },
     "yo-jagat": {
         "title": "यो जगत",
@@ -15,7 +15,7 @@
         "file": "literature/yo-jagat.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2022-02-11T10:17:25-0600"
+        "created_at": "2022-02-11T10:17:25+0545"
     },
     "bethiti": {
         "title": "बेथिति",
@@ -24,7 +24,7 @@
         "file": "literature/bethiti.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2022-01-09T09:46:34-0600"
+        "created_at": "2022-01-09T09:46:34+0545"
     },
     "sunsan-basti": {
         "title": "सुनसान वस्ती",
@@ -33,7 +33,7 @@
         "file": "literature/sunsan-basti.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2021-12-24T11:03:44-0600"
+        "created_at": "2021-12-24T11:03:44+0545"
     },
     "tyo-kshyan": {
         "title": "त्यो क्षण",
@@ -42,7 +42,7 @@
         "file": "literature/tyo-kshyan.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2021-12-24T10:58:32-0600"
+        "created_at": "2021-12-24T10:58:32+0545"
     },
     "yaad": {
         "title": "यादहरू",
@@ -51,7 +51,7 @@
         "file": "literature/yaad.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2021-12-15T09:55:57-0600"
+        "created_at": "2021-12-15T09:55:57+0545"
     },
     "prem": {
         "title": "प्रेम",
@@ -60,7 +60,7 @@
         "file": "literature/prem.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2021-11-27T09:31:59-0600"
+        "created_at": "2021-11-27T09:31:59+0545"
     },
     "kadam": {
         "title": "कदम",
@@ -69,7 +69,7 @@
         "file": "literature/kadam.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2021-11-20T09:47:49-0600"
+        "created_at": "2021-11-20T09:47:49+0545"
     },
     "sadbhab": {
         "title": "सद्भाव",
@@ -78,7 +78,7 @@
         "file": "literature/sadbhab.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2021-11-15T08:41:19-0600"
+        "created_at": "2021-11-15T08:41:19+0545"
     },
     "yatra": {
         "title": "यात्रा",
@@ -87,7 +87,7 @@
         "file": "literature/yatra.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2021-11-10T10:13:44-0600"
+        "created_at": "2021-11-10T10:13:44+0545"
     },
     "jira-terminal": {
         "title": "Jira Terminal",
@@ -105,7 +105,7 @@
         "file": "literature/muskan.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2021-02-14T08:43:57-0600"
+        "created_at": "2021-02-14T08:43:57+0545"
     },
     "timi": {
         "title": "तिमी…..",
@@ -114,7 +114,7 @@
         "file": "literature/timi.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2021-02-14T08:43:00-0600"
+        "created_at": "2021-02-14T08:43:00+0545"
     },
     "ustai": {
         "title": "उस्तै छन्",
@@ -123,7 +123,7 @@
         "file": "literature/ustai.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2021-02-14T08:41:04-0600"
+        "created_at": "2021-02-14T08:41:04+0545"
     },
     "chandrama": {
         "title": "चन्द्रमा",
@@ -132,7 +132,7 @@
         "file": "literature/chandrama.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2021-02-14T08:27:14-0600"
+        "created_at": "2021-02-14T08:27:14+0545"
     },
     "sahayatri": {
         "title": "सहयात्री",
@@ -141,7 +141,7 @@
         "file": "literature/sahayatri.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2021-02-14T08:24:41-0600"
+        "created_at": "2021-02-14T08:24:41+0545"
     },
     "akshar": {
         "title": "मेट्न नसकेको अक्षरहरु।।",
@@ -150,7 +150,7 @@
         "file": "literature/akshar.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2021-02-14T08:23:25-0600"
+        "created_at": "2021-02-14T08:23:25+0545"
     },
     "wikipedia": {
         "title": "विकिपिडिया",
@@ -159,7 +159,7 @@
         "file": "tech/wikipedia.md",
         "keywords": "tech",
         "image_url": "/img/posts/tech/wikipedia.jpg",
-        "created_at": "2021-02-01T07:33:50-0600"
+        "created_at": "2021-02-01T07:33:50+0545"
     },
     "sahar": {
         "title": "त्यो सहर",
@@ -168,7 +168,7 @@
         "file": "literature/sahar.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2021-02-01T07:31:57-0600"
+        "created_at": "2021-02-01T07:31:57+0545"
     },
     "kavi": {
         "title": "म किन कवि बनिँन?",
@@ -177,15 +177,24 @@
         "file": "literature/kavi.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2021-02-01T07:29:31-0600"
+        "created_at": "2021-02-01T07:29:31+0545"
     },
     "rajniti": {
-        "title": "राजनिति अहिले...",
+        "title": "राजनिति अहिले",
         "category": "Literature",
         "file": "literature/rajniti.md",
         "keywords": "literature",
         "image_url": null,
-        "created_at": "2022-08-14T22:40:50-0600",
+        "created_at": "2022-08-14T22:40:50+0545",
         "excerpt": "पाँच वर्ष पुरै निदाई, फेरी जाग्दै छ उ।\nझुक्याउन जनतालाई, फेरि लाग्दै छ उ।\n\nसिद्धान्त को राजनीति त हराई गयो हेर,\nडर त्रास घुर्की देखाई ,भोट माग्दै छ उ"
+    },
+    "eyes": {
+        "title": "चक्षु",
+        "category": "Literature",
+        "file": "literature/eyes.md",
+        "keywords": "literature",
+        "image_url": null,
+        "created_at": "2022-09-12T19:40:50+0545",
+        "excerpt": "नयन तिम्रो वयान गर्ने, योजना जुन गरेको थिएँ।\nनजिकबाट नियाँलु भनि, तिमी तिरै सरेको थिएँ।\n\nमयूरका प्वाँख झै, नाचेका ति परेली तिम्रा,  \nलय त्यस नाँचको देखि, मोहमा जो परेको थिएँ\n"
     }
 }

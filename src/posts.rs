@@ -1,5 +1,6 @@
 use crate::content::{Post, PostMeta};
 
+use chrono::{DateTime, Utc};
 use include_dir::{include_dir, Dir};
 use pulldown_cmark::{html, Options, Parser};
 use std::collections::HashMap;
@@ -19,7 +20,7 @@ struct MetadataJson {
     image_url: Option<String>,
     excerpt: Option<String>,
     show_in_home: Option<bool>,
-    created_at: String,
+    created_at: DateTime<Utc>,
 }
 
 impl MetadataJson {
@@ -31,7 +32,7 @@ impl MetadataJson {
             excerpt: self.excerpt.clone().unwrap_or_else(|| String::from("")),
             image_url: self.image_url.clone(),
             show_in_home: self.show_in_home.unwrap_or(true),
-            created_at: self.created_at.clone(),
+            created_at: self.created_at,
             keywords: self
                 .keywords
                 .clone()

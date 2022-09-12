@@ -33,6 +33,7 @@ impl Component for Post {
                 |keyword| html! { <span class="tag is-info  is-capitalized">{ keyword }</span> },
             );
             set_title(&post.meta.title);
+            let ht = chrono_humanize::HumanTime::from(post.meta.created_at);
 
             html! {
                 <>
@@ -46,6 +47,9 @@ impl Component for Post {
                                 <div class="tags">
                                     { for keywords }
                                 </div>
+                                <h5 class="subtitle">
+                                    { ht }
+                                </h5>
                             </div>
                         </div>
                     </section>

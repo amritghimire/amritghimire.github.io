@@ -33,6 +33,8 @@ impl Component for PostCard {
             let keywords = post.keywords.iter().map(
                 |keyword| html! { <span class="tag is-info is-capitalized">{ keyword }</span> },
             );
+            let ht = chrono_humanize::HumanTime::from(post.created_at);
+
             html! {
                 <>
                 <Link<Route> to={Route::Post { slug: post.slug.clone() }}>
@@ -43,6 +45,7 @@ impl Component for PostCard {
                                     { &post.title }
                                 </Link<Route>>
                             </div>
+                            <div class="subtitle is-6" style="padding: 0 1rem;align-self: center;">{ ht } </div>
                         </div>
                         {
                             if let Some(image_url) = &post.image_url {

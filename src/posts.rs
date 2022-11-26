@@ -115,10 +115,7 @@ impl PostGenerator {
             .map(|(key, value)| value.post_meta(key))
             .collect();
         if let Some(category) = category {
-            posts = posts
-                .into_iter()
-                .filter(|it| it.category.to_lowercase() == category.to_lowercase())
-                .collect();
+            posts.retain(|it| it.category.to_lowercase() == category.to_lowercase());
         }
         posts.sort();
         posts.reverse();

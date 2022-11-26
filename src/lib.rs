@@ -115,13 +115,14 @@ impl Model {
     }
 }
 
+#[allow(clippy::let_unit_value)]
 fn switch(routes: &Route) -> Html {
     match routes.clone() {
         Route::Post { slug } => html! { <Post slug={slug} /> },
         Route::Posts => html! { <PostList /> },
-        Route::Home => html! { <Home /> },
-        Route::LegacyHome => html! { <Home /> },
-        Route::NotFound => html! { <PageNotFound /> },
+        Route::Home => html! { <Home/> },
+        Route::LegacyHome => html! { <Home/> },
+        Route::NotFound => html! { <PageNotFound/> },
         Route::Category { category } => html! { <PostList category={Some(category)} /> },
     }
 }

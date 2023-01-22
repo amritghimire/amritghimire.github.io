@@ -107,7 +107,7 @@ impl PostList {
             <div class="container">
             <div class="tile is-ancestor">
                     <div class="tile is-parent is-vertical">
-                        { for cards.by_ref().take(ITEMS_PER_PAGE as usize / 2) }
+                        { for cards.by_ref().take(ITEMS_PER_PAGE / 2) }
                     </div>
                     <div class="tile is-parent is-vertical">
                         { for cards }

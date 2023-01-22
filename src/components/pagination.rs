@@ -92,7 +92,7 @@ impl Pagination {
             page, total_pages, ..
         } = *props;
 
-        let pages_prev = page.checked_sub(1).unwrap_or_default() as usize;
+        let pages_prev: usize = page.checked_sub(1).unwrap_or_default();
         let pages_next = if total_pages > page {
             total_pages - page
         } else {

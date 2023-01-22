@@ -106,9 +106,7 @@ impl PostGenerator {
 
     pub fn get_posts(&self, page: usize, category: Option<String>) -> Vec<PostMeta> {
         let mut skip_count = (page - 1) * 10;
-        if skip_count > 0 {
-            skip_count -= 1;
-        }
+        skip_count = skip_count.saturating_sub(1);
         let mut posts: Vec<PostMeta> = self
             .metadata
             .iter()

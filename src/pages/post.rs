@@ -1,4 +1,4 @@
-use crate::utils::set_title;
+use crate::utils::{humanize_time, set_title};
 use crate::{components::safe_html::SafeHtml, content, posts::PostGenerator, Route};
 use yew::prelude::*;
 use yew_router::prelude::*;
@@ -33,7 +33,7 @@ impl Component for Post {
                 |keyword| html! { <span class="tag is-info  is-capitalized">{ keyword }</span> },
             );
             set_title(&post.meta.title);
-            let ht = chrono_humanize::HumanTime::from(post.meta.created_at);
+            let ht = humanize_time(post.meta.created_at);
 
             html! {
                 <>

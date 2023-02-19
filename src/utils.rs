@@ -1,4 +1,4 @@
-use time::{Duration, format_description, OffsetDateTime};
+use time::{format_description, Duration, OffsetDateTime};
 use wasm_bindgen::prelude::*;
 use yew::{html, Html};
 
@@ -27,13 +27,11 @@ pub fn line_breaks(excerpt: &str, lines: usize) -> Html {
 
 pub fn humanize_time(datetime: OffsetDateTime) -> String {
     let now = OffsetDateTime::now_utc();
-    let suffix = if datetime<=now { "ago" } else { "later" };
+    let suffix = if datetime <= now { "ago" } else { "later" };
     let diff = (datetime - now).abs();
 
     if diff > Duration::days(365) {
-        let format = format_description::parse(
-            "[month repr:short] [year]",
-        ).unwrap();
+        let format = format_description::parse("[month repr:short] [year]").unwrap();
 
         return datetime.format(&format).unwrap();
     }
@@ -55,9 +53,16 @@ pub fn humanize_time(datetime: OffsetDateTime) -> String {
     format!("{human_time} {suffix}")
 }
 
-
 fn item_pluralize(value: i64, unit: &str) -> String {
-    format!("{} {}", value, if value<=1{ unit.to_string() } else { format!("{unit}s") })
+    format!(
+        "{} {}",
+        value,
+        if value <= 1 {
+            unit.to_string()
+        } else {
+            format!("{unit}s")
+        }
+    )
 }
 
 #[wasm_bindgen(
@@ -66,4 +71,3 @@ fn item_pluralize(value: i64, unit: &str) -> String {
 extern "C" {
     pub fn set_title(title: &str);
 }
-

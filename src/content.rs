@@ -1,5 +1,5 @@
-use chrono::{DateTime, Utc};
 use std::cmp::Ordering;
+use time::OffsetDateTime;
 use yew::Properties;
 
 #[derive(Clone, Debug, Eq, PartialEq, Properties)]
@@ -11,7 +11,7 @@ pub struct PostMeta {
     pub image_url: Option<String>,
     pub excerpt: String,
     pub show_in_home: bool,
-    pub created_at: DateTime<Utc>,
+    pub created_at: OffsetDateTime,
 }
 
 impl Ord for PostMeta {

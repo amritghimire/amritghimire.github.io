@@ -1,12 +1,12 @@
 use crate::content::{Post, PostMeta};
 
-use chrono::{DateTime, Utc};
 use include_dir::{include_dir, Dir};
 use pulldown_cmark::{html, Options, Parser};
 use std::collections::HashMap;
 
 use serde::{Deserialize, Serialize};
 use serde_json::Result;
+use time::OffsetDateTime;
 
 const METADATA: &str = include_str!("../contents/metadata.json");
 const PROJECT_DIR: Dir<'_> = include_dir!("$CARGO_MANIFEST_DIR/contents");
@@ -20,7 +20,9 @@ struct MetadataJson {
     image_url: Option<String>,
     excerpt: Option<String>,
     show_in_home: Option<bool>,
-    created_at: DateTime<Utc>,
+
+    #[serde(with = "time::serde::iso8601")]
+    created_at: OffsetDateTime,
 }
 
 impl MetadataJson {

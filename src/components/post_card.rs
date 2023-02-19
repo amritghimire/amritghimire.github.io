@@ -1,4 +1,4 @@
-use crate::utils::line_breaks;
+use crate::utils::{humanize_time, line_breaks};
 use crate::{content::PostMeta, posts::PostGenerator, Route};
 use yew::prelude::*;
 use yew_router::components::Link;
@@ -33,7 +33,7 @@ impl Component for PostCard {
             let keywords = post.keywords.iter().map(
                 |keyword| html! { <span class="tag is-info is-capitalized">{ keyword }</span> },
             );
-            let ht = chrono_humanize::HumanTime::from(post.created_at);
+            let ht = humanize_time(post.created_at);
 
             html! {
                 <>

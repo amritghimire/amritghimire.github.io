@@ -92,25 +92,37 @@ impl Component for PostList {
         }
     }
 }
+
 impl PostList {
     fn view_posts(&self, _ctx: &Context<Self>) -> Html {
         let posts = self.generator.get_posts(self.page, self.category.clone());
+        let mut odd = Vec::new();
+        let mut even = Vec::new();
 
-        let mut cards = posts.iter().map(|post| {
-            html! {
-                <li class="tile is-child is-12">
-                    <PostCard slug={post.slug.clone()} />
-                </li>
+        for (i, post) in posts.iter().enumerate() {
+            if i % 2 == 0 {
+                even.push(html! {
+                    <li class="tile is-child is-12">
+                        <PostCard slug={post.slug.clone()} />
+                    </li>
+                });
+            } else {
+                odd.push(html! {
+                    <li class="tile is-child is-12">
+                        <PostCard slug={post.slug.clone()} />
+                    </li>
+                });
             }
-        });
+        }
+
         html! {
             <div class="container">
             <div class="tile is-ancestor">
                     <div class="tile is-parent is-vertical">
-                        { for cards.by_ref().take(ITEMS_PER_PAGE / 2) }
+                        { for even }
                     </div>
                     <div class="tile is-parent is-vertical">
-                        { for cards }
+                        { for odd }
                     </div>
                 </div>
             </div>

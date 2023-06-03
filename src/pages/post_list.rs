@@ -20,7 +20,7 @@ pub enum Msg {
 pub struct PostList {
     page: usize,
     generator: PostGenerator,
-    _listener: HistoryListener,
+    _listener: LocationHandle,
     category: Option<String>,
 }
 
@@ -36,9 +36,10 @@ impl Component for PostList {
 
     fn create(ctx: &Context<Self>) -> Self {
         let link = ctx.link().clone();
-        let listener = ctx.link().history().unwrap().listen(move || {
-            link.send_message(Msg::PageUpdated);
-        });
+        let listener = ctx
+            .link()
+            .add_location_listener(link.callback(move |_| Msg::PageUpdated))
+            .unwrap();
 
         let generator = PostGenerator::new();
         let page = current_page(ctx);
@@ -59,7 +60,7 @@ impl Component for PostList {
         true
     }
 
-    fn changed(&mut self, ctx: &Context<Self>) -> bool {
+    fn changed(&mut self, ctx: &Context<Self>, _old_props: &Self::Properties) -> bool {
         self.category = ctx.props().category.clone();
         true
     }

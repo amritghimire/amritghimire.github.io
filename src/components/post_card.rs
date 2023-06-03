@@ -23,7 +23,7 @@ impl Component for PostCard {
 
         Self { post, generator }
     }
-    fn changed(&mut self, ctx: &Context<Self>) -> bool {
+    fn changed(&mut self, ctx: &Context<Self>, _old_props: &Self::Properties) -> bool {
         self.post = self.generator.get_post_metadata(&ctx.props().slug);
         true
     }

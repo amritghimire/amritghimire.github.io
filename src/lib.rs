@@ -60,7 +60,7 @@ impl Component for Model {
                 { self.view_nav(ctx.link()) }
 
                 <main>
-                    <Switch<Route> render={Switch::render(switch)} />
+                    <Switch<Route> render={switch} />
                 </main>
                 <footer class="footer">
                     <div class="content has-text-centered">
@@ -116,8 +116,8 @@ impl Model {
 }
 
 #[allow(clippy::let_unit_value)]
-fn switch(routes: &Route) -> Html {
-    match routes.clone() {
+fn switch(routes: Route) -> Html {
+    match routes {
         Route::Post { slug } => html! { <Post slug={slug} /> },
         Route::Posts => html! { <PostList /> },
         Route::Home => html! { <Home/> },
@@ -128,5 +128,5 @@ fn switch(routes: &Route) -> Html {
 }
 
 pub fn main() {
-    yew::start_app::<Model>();
+    yew::Renderer::<Model>::new().render();
 }

@@ -60,8 +60,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: dtolnay/rust-toolchain@stable
-          with:
-            components: rustfmt, clippy
+        with:
+          components: rustfmt, clippy
       - uses: Swatinem/rust-cache@v1
       - uses: actions-rs/cargo@v1
         with:

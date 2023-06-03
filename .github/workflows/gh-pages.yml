@@ -21,6 +21,8 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: check
+        env:
+          RUSTFLAGS: "-Zmir-enable-passes=-CheckAlignment"
 
   test:
     name: Test Suite
@@ -36,6 +38,8 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: test
+        env:
+          RUSTFLAGS: "-Zmir-enable-passes=-CheckAlignment"
 
   fmt:
     name: Rustfmt
@@ -53,20 +57,27 @@ jobs:
         with:
           command: fmt
           args: --all -- --check
+        env:
+          RUSTFLAGS: "-Zmir-enable-passes=-CheckAlignment"
 
   clippy:
     name: Clippy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions-rs/toolchain@v1
         with:
-          components: rustfmt, clippy
+          profile: minimal
+          toolchain: stable
+          override: true
+      - run: rustup component add clippy
       - uses: Swatinem/rust-cache@v1
       - uses: actions-rs/cargo@v1
         with:
           command: clippy
           args: -- -D warnings
+        env:
+          RUSTFLAGS: "-Zmir-enable-passes=-CheckAlignment"
   deploy:
     runs-on: ubuntu-20.04
     needs: [check, test, fmt, clippy]
@@ -92,8 +103,12 @@ jobs:
           crate: trunk
       - name: Run cargo build first
         run: cargo build --release
+        env:
+          RUSTFLAGS: "-Zmir-enable-passes=-CheckAlignment"
       - name: Build
         run: trunk build --release
+        env:
+          RUSTFLAGS: "-Zmir-enable-passes=-CheckAlignment"
 
       - name: Push
         uses: peaceiris/actions-gh-pages@v3

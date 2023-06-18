@@ -31,7 +31,7 @@ impl Component for PostCard {
     fn view(&self, _ctx: &Context<Self>) -> Html {
         if let Some(post) = &self.post {
             let keywords = post.keywords.iter().map(
-                |keyword| html! { <span class="tag is-info is-capitalized">{ keyword }</span> },
+                |keyword| html! { <span class="tag is-info is-capitalized mx-1">{ keyword }</span> },
             );
             let ht = humanize_time(post.created_at);
 

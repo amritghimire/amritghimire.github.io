@@ -68,7 +68,7 @@ impl Component for PostList {
     fn view(&self, ctx: &Context<Self>) -> Html {
         let page = self.page;
         let title = if let Some(c) = &self.category {
-            c.clone()
+            c.clone().replace('_', " ")
         } else {
             "All Posts".to_string()
         };

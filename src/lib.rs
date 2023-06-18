@@ -102,8 +102,11 @@ impl Model {
                         <Link<Route> classes={classes!("navbar-item")} to={Route::Home}>
                             { "Home" }
                         </Link<Route>>
-                        <Link<Route> classes={classes!("navbar-item")} to={Route::Category{category: "literature".to_string()}}>
+                        <Link<Route> classes={classes!("navbar-item")} to={Route::Category{category: "english_literature".to_string()}}>
                             { "Literature" }
+                        </Link<Route>>
+                        <Link<Route> classes={classes!("navbar-item")} to={Route::Category{category: "literature".to_string()}}>
+                            { "साहित्य" }
                         </Link<Route>>
                         <Link<Route> classes={classes!("navbar-item")} to={Route::Category{category: "tech".to_string()}}>
                             { "Tech" }

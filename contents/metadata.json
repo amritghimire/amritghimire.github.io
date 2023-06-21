@@ -250,5 +250,14 @@
         "image_url": null,
         "created_at": "2023-06-18T09:30:00+0545",
         "excerpt": "Someone asked for some clue.\nWhat do I like about you?\nThe reason I am blown,\nis not only your eyes.\nThe tiny flaws you own,\nthat’s what mesmerize"
+    },
+    "memory": {
+        "title": "Memory",
+        "category": "English_Literature",
+        "file": "literature/english/memory.md",
+        "keywords": "literature,english,poem",
+        "image_url": null,
+        "created_at": "2023-06-21T21:30:00+0545",
+        "excerpt": "I still remember the day, we met.\n\nThe curious look you had,\nThe tiny twinkle that lies.\nIf only I could get mad,\nSwimming through those eyes."
     }
 }

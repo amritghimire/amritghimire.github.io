@@ -259,5 +259,14 @@
         "image_url": null,
         "created_at": "2023-06-21T21:30:00+0545",
         "excerpt": "I still remember the day, we met.\n\nThe curious look you had,\nThe tiny twinkle that lies.\nIf only I could get mad,\nSwimming through those eyes."
+    },
+    "stolen-glances": {
+        "title": "Stolen glances",
+        "category": "English_Literature",
+        "file": "literature/english/stolen-glances.md",
+        "keywords": "literature,english,poem",
+        "image_url": null,
+        "created_at": "2023-07-13T07:30:00+0545",
+        "excerpt": "And still we find one another,\nLost in thoughts of each other.\nYou thought I didn’t notice,\nProbably I liked to assume the same.\nBut the thrill in stolen glance,\nDefinitely is worth the fame."
     }
 }

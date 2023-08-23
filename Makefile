@@ -1,7 +1,7 @@
 .PHONY: serve
 serve:
 	cargo build
-	trunk serve --open --address 0.0.0.0
+	trunk serve --open --address 0.0.0.0 --port 8089
 
 .PHONY: build
 build:

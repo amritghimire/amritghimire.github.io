@@ -288,12 +288,30 @@
         "excerpt": "You looked at my eye.\nYou asked “Who am I?”\n\nYour nature of question,\nThat confused me.\nI replied,\n          “You are who you’ve always dreamt to be.”"
     },
     "smile": {
-        "title": "Reason of Smile?",
+        "title": "Reason of Smile",
         "category": "English_Literature",
         "file": "literature/english/smile.md",
         "keywords": "literature,english,poem",
         "image_url": null,
         "created_at": "2023-08-09T19:30:00+0545",
         "excerpt": "All of a sudden, I find myself smiling,\nby a mere mention of your name.\nA small memory in my mind rising,\nAnd my heart is not the same."
+    },
+    "new-beginning": {
+        "title": "New beginning",
+        "category": "English_Literature",
+        "file": "literature/english/new-beginning.md",
+        "keywords": "literature,english,poem",
+        "image_url": null,
+        "created_at": "2023-08-16T18:30:00+0545",
+        "excerpt": "All these years, I lived,\nHappily I might add. \nSomething was missing,\nFrom all that I had,\n\nAnd then, I met you,\nLike the dream I knew\n"
+    },
+    "paribartan": {
+        "title": "परिवर्तन",
+        "category": "Literature",
+        "file": "literature/paribartan.md",
+        "keywords": "literature,गजल",
+        "image_url": null,
+        "created_at": "2023-08-23T11:03:00+0545",
+        "excerpt": "एक्लोपनको भाव सारा, मेटिएको छ ।\nनयाँ एउटा गोरेटो जुन केरिएको छ ॥\n\nपरिचय तिमीसँग, भएपछि हेर।\nसपनाको परिवेश नै, फेरिएको छ ॥"
     }
 }

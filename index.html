@@ -1,18 +1,20 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Amrit Ghimire, Ranjit</title>
-    <meta name="description" content="Personal Website of Amrit Ghimire Ranjit Including the blog content, experiences and other">
-    <meta name="keywords" content="personal, rust, amrit, ghimire">
-    <meta name="author" content="Amrit Ghimire">
-    <meta property="og:title" content="Amrit Ghimire, Ranjit">
-    <meta property="og:description" content="Personal Website of Amrit Ghimire Ranjit Including the blog content, experiences and other">
+    <meta name="description" content="Personal Website of Amrit Ghimire Ranjit Including the blog content, experiences and other"/>
+    <meta name="keywords" content="personal, rust, amrit, ghimire"/>
+    <meta name="author" content="Amrit Ghimire"/>
+    <meta property="og:title" content="Amrit Ghimire, Ranjit" />
+    <meta property="og:description" content="Personal Website of Amrit Ghimire Ranjit Including the blog content, experiences and other" />
 
-    <base href="/">
-    <link rel="stylesheet" href="/bulma.min-5cd726a688b47d72.css">
-    <link rel="stylesheet" href="/brands.min-d10e2e879f2a7f02.css">
-    <link rel="stylesheet" href="/index-2e4e699b9f23b3d5.css">
+    <base href="/" />
+    <link rel="stylesheet" href="/bulma.min-5cd726a688b47d72.css" integrity="sha384&#x2D;4em484va1axTOWEtQ2De&#x2B;F&#x2B;ZcQgGnWxvbINokKfnVZxyJZP5Iu0RzVqk6N29pMxQ" preload/>
+    <link rel="stylesheet" href="/brands.min-d10e2e879f2a7f02.css" integrity="sha384&#x2D;bSSRmv&#x2F;7zc8N&#x2F;&#x2F;nlEscKMJrVdXnmDX0i3KY5&#x2F;Z25DbCimvRgRrefGMGQORqrdfD&#x2B;"/>
+    <link rel="stylesheet" href="/index-8b7906476da3648f.css" integrity="sha384&#x2D;LBXPhbl55g14FQyadtbXTgnIrIBXv0yWRt34tHpPXikty&#x2F;BrLE6X&#x2F;RcanARBhiTg"/>
     
     
     
@@ -23,7 +25,7 @@
     
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
     <!-- Start Single Page Apps for GitHub Pages -->
     <script type="text/javascript">
@@ -50,9 +52,20 @@
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
   
-<link rel="preload" href="/personal-frontend-350169f7ec252c43_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
-<link rel="modulepreload" href="/personal-frontend-350169f7ec252c43.js"></head>
+<link rel="modulepreload" href="/personal-frontend-57cddaf989758e6.js" crossorigin=anonymous integrity="sha384-vApIi+PXf/r9w4/puuMZs0RfvyTtfNWezyCPLy/nLbjG6WvctClXxR0S4T4XR4FJ">
+<link rel="modulepreload" href="/snippets/personal-frontend-3f1927461f93d00e/inline0.js" crossorigin=anonymous integrity="sha384-ZqhrVg0S75gp/HZqhrcJkRReyLFg+OQLz43dwCPbTBo+7uBLnd0OWOoHQ4bDyelN">
+<link rel="preload" href="/personal-frontend-57cddaf989758e6_bg.wasm" crossorigin=anonymous integrity="sha384-KxkikKVghdmbAkvHjK84rWMc1LGiA21R547VXMNzrXfZQESqtelW//O8brgA9cPv" as="fetch" type="application/wasm"></head>
 
   <body>
+<script type="module">
+import init, * as bindings from '/personal-frontend-57cddaf989758e6.js';
+const wasm = await init('/personal-frontend-57cddaf989758e6_bg.wasm');
 
-<script type="module">import init from '/personal-frontend-350169f7ec252c43.js';init('/personal-frontend-350169f7ec252c43_bg.wasm');</script></body></html>
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script></body>
+</html>

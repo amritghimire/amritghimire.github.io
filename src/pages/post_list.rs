@@ -61,7 +61,7 @@ impl Component for PostList {
     }
 
     fn changed(&mut self, ctx: &Context<Self>, _old_props: &Self::Properties) -> bool {
-        self.category.clone_from(&ctx.props().category)
+        self.category.clone_from(&ctx.props().category);
         true
     }
 

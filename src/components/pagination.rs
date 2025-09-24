@@ -93,11 +93,7 @@ impl Pagination {
         } = *props;
 
         let pages_prev: usize = page.checked_sub(1).unwrap_or_default();
-        let pages_next = if total_pages > page {
-            total_pages - page
-        } else {
-            0
-        };
+        let pages_next = total_pages.saturating_sub(page);
 
         let links_left = LINKS_PER_SIDE.min(pages_prev)
             // if there are less than `LINKS_PER_SIDE` to the right, we add some more on the left.

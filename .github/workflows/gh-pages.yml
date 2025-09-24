@@ -68,7 +68,7 @@ jobs:
           command: clippy
           args: -- -D warnings
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     needs: [check, test, fmt, clippy]
     permissions:
       contents: write

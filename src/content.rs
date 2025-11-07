@@ -8,6 +8,7 @@ pub struct PostMeta {
     pub category: String,
     pub slug: String,
     pub keywords: Vec<String>,
+    pub tags: Vec<String>,
     pub image_url: Option<String>,
     pub excerpt: String,
     pub show_in_home: bool,

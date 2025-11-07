@@ -2,6 +2,8 @@
 
 Voice-activated expense tracking transforms how you manage money. Instead of pulling out your phone, opening an app, and filling in fields, you simply say "Hey Siri, add income in Finrup" and you're done. Finrup's Siri integration makes expense tracking quick and hands-free. Here's everything you need to know about using Siri with Finrup.
 
+![Finrup Siri Shortcuts](/img/posts/tech/finrup/finrup-siri-shortcuts.jpg)
+
 ## Why Voice-Activated Expense Tracking?
 
 ### The Tracking Problem

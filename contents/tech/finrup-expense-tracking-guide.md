@@ -63,6 +63,8 @@ The Siri integration makes expense tracking hands-free and quick.
 **Widgets**
 Add home screen widgets with quick-launch buttons to open add expense, add income, or add transfer screens instantly.
 
+![Finrup Expense Tracking Interface](/img/posts/tech/finrup/finrup-expense-tracker-hero.jpg)
+
 ### 2. Smart Categorization
 
 Finrup's categorization system helps you stay organized:
@@ -77,6 +79,8 @@ Example categories:
 - **Lifestyle**: Dining Out, Entertainment, Shopping, Travel
 - **Financial**: Investments, Savings, Insurance, Taxes
 - **Business**: Office Supplies, Software, Marketing, Equipment
+
+![Finrup Categories Organization](/img/posts/tech/finrup/finrup-categories.jpg)
 
 ### 3. Multi-Account Management
 
@@ -98,6 +102,8 @@ For those who deal with multiple currencies, Finrup now offers advanced currency
 - **Perfect for**: Travelers, expats, international businesses, cryptocurrency investors
 
 Example: Transfer $1,000 USD to EUR account with automatic conversion rate calculation and storage for future transfers.
+
+![Finrup Dashboard Overview](/img/posts/tech/finrup/finrup-dashboard.jpg)
 
 ## Advanced Expense Tracking Features
 

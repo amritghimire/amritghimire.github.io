@@ -2,6 +2,8 @@
 
 In our increasingly globalized world, managing money across multiple currencies is no longer just for international businesses—it's a reality for digital nomads, expats, frequent travelers, online sellers, and remote workers. Finrup's new multi-currency features make managing international finances as simple as tracking domestic expenses.
 
+![Finrup Multi-Currency Management](/img/posts/tech/finrup/finrup-multi-currency.jpg)
+
 ## Who Needs Multi-Currency Money Management?
 
 ### Digital Nomads and Remote Workers

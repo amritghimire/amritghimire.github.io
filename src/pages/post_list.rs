@@ -11,6 +11,7 @@ pub const ITEMS_PER_PAGE: usize = 10;
 #[derive(Clone, Debug, Eq, PartialEq, Properties)]
 pub struct Props {
     pub category: Option<String>,
+    pub tag: Option<String>,
 }
 
 pub enum Msg {
@@ -22,6 +23,7 @@ pub struct PostList {
     generator: PostGenerator,
     _listener: LocationHandle,
     category: Option<String>,
+    tag: Option<String>,
 }
 
 fn current_page(ctx: &Context<PostList>) -> usize {
@@ -44,12 +46,14 @@ impl Component for PostList {
         let generator = PostGenerator::new();
         let page = current_page(ctx);
         let category: Option<String> = ctx.props().category.clone();
+        let tag: Option<String> = ctx.props().tag.clone();
 
         Self {
             page,
             _listener: listener,
             generator,
             category,
+            tag,
         }
     }
 
@@ -62,19 +66,24 @@ impl Component for PostList {
 
     fn changed(&mut self, ctx: &Context<Self>, _old_props: &Self::Properties) -> bool {
         self.category.clone_from(&ctx.props().category);
+        self.tag.clone_from(&ctx.props().tag);
         true
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
         let page = self.page;
-        let title = if let Some(c) = &self.category {
+        let title = if let Some(t) = &self.tag {
+            format!("#{}", t.clone().replace('-', " "))
+        } else if let Some(c) = &self.category {
             c.clone().replace('_', " ")
         } else {
             "All Posts".to_string()
         };
         set_title(&title);
 
-        let route_to_page = if let Some(category) = self.category.clone() {
+        let route_to_page = if let Some(tag) = self.tag.clone() {
+            Route::Tag { tag }
+        } else if let Some(category) = self.category.clone() {
             Route::Category { category }
         } else {
             Route::Posts
@@ -86,7 +95,7 @@ impl Component for PostList {
                 { self.view_posts(ctx) }
                 <Pagination
                     {page}
-                    total_pages={self.generator.size(self.category.clone()) / ITEMS_PER_PAGE + 1}
+                    total_pages={self.generator.size_filtered(self.category.clone(), self.tag.clone()) / ITEMS_PER_PAGE + 1}
                     route_to_page={route_to_page}
                 />
             </div>
@@ -96,7 +105,7 @@ impl Component for PostList {
 
 impl PostList {
     fn view_posts(&self, _ctx: &Context<Self>) -> Html {
-        let posts = self.generator.get_posts(self.page, self.category.clone());
+        let posts = self.generator.get_posts_filtered(self.page, self.category.clone(), self.tag.clone());
         let mut odd = Vec::new();
         let mut even = Vec::new();
 

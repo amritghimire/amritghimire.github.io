@@ -2,6 +2,8 @@
 
 YNAB (You Need A Budget) and Finrup both take personal finance seriously, but they approach budgeting from different philosophical and technical perspectives. This detailed comparison will help you understand which app aligns better with your financial goals and lifestyle.
 
+![Finrup vs YNAB Comparison](/img/posts/tech/finrup/finrup-vs-ynab.jpg)
+
 ## At A Glance
 
 | Feature | Finrup | YNAB |

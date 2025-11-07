@@ -37,11 +37,11 @@ impl Component for PostCard {
 
             html! {
                 <>
-                <Link<Route> to={Route::Post { slug: post.slug.clone() }}>
+                <Link<Route> to={Route::Post { category: post.category.to_lowercase().replace(' ', "_"), slug: post.slug.clone() }}>
                     <div class="card mx-3">
                         <div class="card-header">
                             <div class="card-header-title">
-                                <Link<Route> classes={classes!("title", "is-block")} to={Route::Post { slug: post.slug.clone() }}>
+                                <Link<Route> classes={classes!("title", "is-block")} to={Route::Post { category: post.category.to_lowercase().replace(' ', "_"), slug: post.slug.clone() }}>
                                     { &post.title }
                                 </Link<Route>>
                             </div>

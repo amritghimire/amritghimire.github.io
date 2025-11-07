@@ -2,6 +2,8 @@
 
 Choosing the right budgeting app can transform your financial life. Mint has been a household name in personal finance for years, while Finrup offers a fresh, privacy-focused alternative optimized for Apple devices. This comprehensive comparison will help you decide which app best suits your needs.
 
+![Finrup vs Mint Comparison](/img/posts/tech/finrup/finrup-vs-mint.jpg)
+
 ## Quick Comparison Table
 
 | Feature | Finrup | Mint |

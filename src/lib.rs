@@ -13,12 +13,16 @@ use yew::html::Scope;
 
 #[derive(Routable, PartialEq, Eq, Clone, Debug)]
 pub enum Route {
+    #[at("/:category/:slug")]
+    Post { category: String, slug: String },
     #[at("/posts/:slug")]
-    Post { slug: String },
+    LegacyPost { slug: String },
     #[at("/posts")]
     Posts,
     #[at("/category/:category")]
     Category { category: String },
+    #[at("/tag/:tag")]
+    Tag { tag: String },
     #[at("/")]
     Home,
     #[at("/home")]
@@ -111,6 +115,26 @@ impl Model {
                         <Link<Route> classes={classes!("navbar-item")} to={Route::Category{category: "tech".to_string()}}>
                             { "Tech" }
                         </Link<Route>>
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">
+                                { "Finrup" }
+                            </a>
+                            <div class="navbar-dropdown">
+                                <Link<Route> classes={classes!("navbar-item")} to={Route::Tag{tag: "finrup".to_string()}}>
+                                    { "Finrup Blog Posts" }
+                                </Link<Route>>
+                                <a class="navbar-item" href="/finrup-budgeting-tips.html">
+                                    { "Best Budgeting Tips" }
+                                </a>
+                                <a class="navbar-item" href="/support.html">
+                                    { "Support" }
+                                </a>
+                                <hr class="navbar-divider" />
+                                <a class="navbar-item" href="https://apps.apple.com/in/app/finrup/id6752817572" target="_blank" rel="noopener">
+                                    { "Download Finrup" }
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -121,12 +145,14 @@ impl Model {
 #[allow(clippy::let_unit_value)]
 fn switch(routes: Route) -> Html {
     match routes {
-        Route::Post { slug } => html! { <Post slug={slug} /> },
+        Route::Post { slug, .. } => html! { <Post slug={slug} /> },
+        Route::LegacyPost { slug } => html! { <Post slug={slug} /> },
         Route::Posts => html! { <PostList /> },
         Route::Home => html! { <Home/> },
         Route::LegacyHome => html! { <Home/> },
         Route::NotFound => html! { <PageNotFound/> },
         Route::Category { category } => html! { <PostList category={Some(category)} /> },
+        Route::Tag { tag } => html! { <PostList tag={Some(tag)} /> },
     }
 }
 

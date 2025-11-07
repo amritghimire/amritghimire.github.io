@@ -66,6 +66,8 @@ Zero-based budgeting means your income minus expenses and savings equals zero. E
 
 **How Finrup Helps**: Create detailed categories for every spending area. Use the dashboard to ensure your income and total allocated expenses match. Track actual vs. planned spending in real-time.
 
+![Finrup Budgeting Features](/img/posts/tech/finrup/finrup-budgeting-tips.jpg)
+
 ## 5. Build an Emergency Fund
 
 ### Your Financial Safety Net

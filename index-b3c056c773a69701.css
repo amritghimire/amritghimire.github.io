@@ -192,3 +192,34 @@
     max-width: 900px;
   }
 }
+
+.card .card-header-title {
+  padding: 0.75rem 1rem;
+}
+.card .card-header-title .title {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  line-height: 1.4;
+  margin-bottom: 0 !important;
+  color: #363636;
+  transition: color 0.2s ease;
+}
+.card .card-header-title .title:hover {
+  color: #667eea;
+}
+.card .subtitle {
+  font-size: 0.85rem;
+  color: #7a7a7a;
+}
+.card .card-content {
+  padding: 1rem 1.25rem;
+}
+.card .card-content .content {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+}
+.card .card-content .tag {
+  font-size: 0.75rem;
+  padding: 0.25em 0.5em;
+}

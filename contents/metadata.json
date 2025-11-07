@@ -1,4 +1,58 @@
 {
+    "finrup-expense-tracking-guide": {
+        "title": "How to Track Expenses with Finrup: Complete Guide",
+        "category": "Tech",
+        "excerpt": "Managing your personal finances doesn't have to be complicated. With Finrup, tracking expenses becomes effortless, whether you're on your iPhone, Mac, or Vision Pro. This comprehensive guide will walk you through everything you need to know about expense tracking with Finrup.",
+        "file": "tech/finrup-expense-tracking-guide.md",
+        "keywords": "finrup,expense tracker,personal finance,budget app,track expenses,money management,ios,mac,visionos",
+        "image_url": null,
+        "created_at": "2025-01-15T10:00:00-0500"
+    },
+    "budgeting-tips-2025": {
+        "title": "20 Best Budgeting Tips for 2025",
+        "category": "Tech",
+        "excerpt": "Budgeting doesn't have to be restrictive or complicated. With the right strategies and tools like Finrup, you can create a sustainable budget that helps you achieve your financial goals while still enjoying life. Here are the best budgeting tips for 2025, backed by proven strategies and modern technology.",
+        "file": "tech/budgeting-tips-2025.md",
+        "keywords": "budgeting tips,personal budget,money management,financial planning,save money,50/30/20 rule,finrup,budget app",
+        "image_url": null,
+        "created_at": "2025-01-15T09:00:00-0500"
+    },
+    "multi-currency-money-management": {
+        "title": "Multi-Currency Money Management Guide with Finrup",
+        "category": "Tech",
+        "excerpt": "In our increasingly globalized world, managing money across multiple currencies is no longer just for international businesses—it's a reality for digital nomads, expats, frequent travelers, online sellers, and remote workers. Finrup's multi-currency features make managing international finances simple.",
+        "file": "tech/multi-currency-money-management.md",
+        "keywords": "multi-currency,currency conversion,international finance,expat finance,digital nomad,finrup,exchange rate,travel money",
+        "image_url": null,
+        "created_at": "2025-01-15T08:00:00-0500"
+    },
+    "finrup-vs-mint": {
+        "title": "Finrup vs Mint: Which Budget App is Better? 2025 Comparison",
+        "category": "Tech",
+        "excerpt": "Choosing the right budgeting app can transform your financial life. Mint has been a household name in personal finance for years, while Finrup offers a fresh, privacy-focused alternative optimized for Apple devices. This comprehensive comparison will help you decide which app best suits your needs.",
+        "file": "tech/finrup-vs-mint.md",
+        "keywords": "finrup vs mint,budget app comparison,best budget app,personal finance app,privacy,expense tracker comparison",
+        "image_url": null,
+        "created_at": "2025-01-14T15:00:00-0500"
+    },
+    "finrup-vs-ynab": {
+        "title": "Finrup vs YNAB: Budget App Comparison 2025",
+        "category": "Tech",
+        "excerpt": "YNAB (You Need A Budget) and Finrup both take personal finance seriously, but they approach budgeting from different philosophical and technical perspectives. This detailed comparison will help you understand which app aligns better with your financial goals and lifestyle.",
+        "file": "tech/finrup-vs-ynab.md",
+        "keywords": "finrup vs ynab,budget app comparison,zero-based budgeting,you need a budget,personal finance,expense tracking",
+        "image_url": null,
+        "created_at": "2025-01-14T14:00:00-0500"
+    },
+    "siri-shortcuts-expense-tracking": {
+        "title": "Using Siri Shortcuts for Expense Tracking with Finrup",
+        "category": "Tech",
+        "excerpt": "Voice-activated expense tracking transforms how you manage money. Instead of pulling out your phone, opening an app, and filling in fields, you simply say 'Hey Siri, log my coffee purchase' and you're done. Finrup's deep Siri integration makes this seamless.",
+        "file": "tech/siri-shortcuts-expense-tracking.md",
+        "keywords": "siri shortcuts,voice expense tracking,automation,ios shortcuts,finrup,apple shortcuts,hands-free finance",
+        "image_url": null,
+        "created_at": "2025-01-14T12:00:00-0500"
+    },
     "parkhai": {
         "title": "पर्खाई",
         "category": "Literature",

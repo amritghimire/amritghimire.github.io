@@ -56,9 +56,9 @@ impl Component for Post {
                     <div class="section container">
                         <div class="columns is-centered">
                           <div class="column is-half">
-                            <p class="content has-text-centered has-text-weight-semibold is-size-5">
+                            <div class="content">
                                 <SafeHtml html={post.content.clone()} />
-                            </p>
+                            </div>
                           </div>
                         </div>
                     </div>

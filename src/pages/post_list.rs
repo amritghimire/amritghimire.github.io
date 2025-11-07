@@ -105,7 +105,9 @@ impl Component for PostList {
 
 impl PostList {
     fn view_posts(&self, _ctx: &Context<Self>) -> Html {
-        let posts = self.generator.get_posts_filtered(self.page, self.category.clone(), self.tag.clone());
+        let posts =
+            self.generator
+                .get_posts_filtered(self.page, self.category.clone(), self.tag.clone());
         let mut odd = Vec::new();
         let mut even = Vec::new();
 

@@ -89,23 +89,25 @@ impl PostGenerator {
             .iter()
             .map(|(key, value)| value.post_meta(key))
             .collect();
-        
+
         let filtered = posts.iter().filter(|post| {
             let category_matches = if let Some(ref cat) = category {
                 post.category.to_lowercase() == cat.to_lowercase()
             } else {
                 true
             };
-            
+
             let tag_matches = if let Some(ref t) = tag {
-                post.tags.iter().any(|post_tag| post_tag.to_lowercase() == t.to_lowercase())
+                post.tags
+                    .iter()
+                    .any(|post_tag| post_tag.to_lowercase() == t.to_lowercase())
             } else {
                 true
             };
-            
+
             category_matches && tag_matches
         });
-        
+
         filtered.count()
     }
 
@@ -157,7 +159,12 @@ impl PostGenerator {
         posts.into_iter().skip(skip_count).take(10).collect()
     }
 
-    pub fn get_posts_filtered(&self, page: usize, category: Option<String>, tag: Option<String>) -> Vec<PostMeta> {
+    pub fn get_posts_filtered(
+        &self,
+        page: usize,
+        category: Option<String>,
+        tag: Option<String>,
+    ) -> Vec<PostMeta> {
         let mut skip_count = (page - 1) * 10;
         skip_count = skip_count.saturating_sub(1);
         let mut posts: Vec<PostMeta> = self
@@ -165,15 +172,19 @@ impl PostGenerator {
             .iter()
             .map(|(key, value)| value.post_meta(key))
             .collect();
-        
+
         if let Some(category) = category {
             posts.retain(|it| it.category.to_lowercase() == category.to_lowercase());
         }
-        
+
         if let Some(tag) = tag {
-            posts.retain(|it| it.tags.iter().any(|post_tag| post_tag.to_lowercase() == tag.to_lowercase()));
+            posts.retain(|it| {
+                it.tags
+                    .iter()
+                    .any(|post_tag| post_tag.to_lowercase() == tag.to_lowercase())
+            });
         }
-        
+
         posts.sort();
         posts.reverse();
         posts.into_iter().skip(skip_count).take(10).collect()

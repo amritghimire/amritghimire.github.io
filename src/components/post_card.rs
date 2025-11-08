@@ -52,7 +52,12 @@ impl Component for PostCard {
                                 html! {
                                     <div class="card-image">
                                         <figure class="image is-2by1">
-                                            <img src={image_url.clone()} alt={post.title.clone()} loading="lazy"/>
+                                            <img
+                                                src={image_url.clone()}
+                                                alt={post.title.clone()}
+                                                loading="lazy"
+                                                decoding="async"
+                                            />
                                         </figure>
                                     </div>
                                 }
@@ -64,7 +69,9 @@ impl Component for PostCard {
                             <div class="content">
                                 { line_breaks(&post.excerpt.clone(), 5) }
                             </div>
-                            {for keywords}
+                            <div class="tags mt-3">
+                                {for keywords}
+                            </div>
                         </div>
                     </div>
                 </Link<Route>>

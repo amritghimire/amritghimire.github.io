@@ -91,13 +91,15 @@ impl Component for PostList {
 
         html! {
             <div class="section container">
-                <h1 class="title is-capitalized">{ title }</h1>
+                <h1 class="title is-capitalized mb-6">{ title }</h1>
                 { self.view_posts(ctx) }
-                <Pagination
-                    {page}
-                    total_pages={self.generator.size_filtered(self.category.clone(), self.tag.clone()) / ITEMS_PER_PAGE + 1}
-                    route_to_page={route_to_page}
-                />
+                <div class="mt-6">
+                    <Pagination
+                        {page}
+                        total_pages={self.generator.size_filtered(self.category.clone(), self.tag.clone()) / ITEMS_PER_PAGE + 1}
+                        route_to_page={route_to_page}
+                    />
+                </div>
             </div>
         }
     }
@@ -129,7 +131,7 @@ impl PostList {
 
         html! {
             <div class="container">
-            <div class="tile is-ancestor">
+                <div class="tile is-ancestor">
                     <div class="tile is-parent is-vertical">
                         { for even }
                     </div>

@@ -10,6 +10,11 @@
     <meta name="author" content="Amrit Ghimire"/>
     <meta property="og:title" content="Amrit Ghimire, Ranjit" />
     <meta property="og:description" content="Personal Website of Amrit Ghimire Ranjit Including the blog content, experiences and other" />
+    
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preload" href="/img/amrit.webp" as="image" type="image/webp">
 
     <base data-trunk-public-url />
     <link data-trunk
@@ -58,6 +63,91 @@
       }(window.location))
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
+    
+    <!-- Intersection Observer for Scroll Animations -->
+    <script type="text/javascript">
+      (function() {
+        // Intersection Observer for fade-in-on-scroll animations
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.1
+        };
+
+        const intersectionObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              intersectionObserver.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        // Function to observe fade-in elements
+        function observeFadeElements() {
+          const fadeElements = document.querySelectorAll('.fade-in-on-scroll:not(.visible)');
+          fadeElements.forEach(function(el) {
+            // Check if element is in hero section - make visible immediately
+            const heroSection = el.closest('.hero');
+            if (heroSection) {
+              el.classList.add('visible');
+              return;
+            }
+            
+            // Check if element is already in viewport
+            const rect = el.getBoundingClientRect();
+            const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+            if (isInViewport) {
+              el.classList.add('visible');
+              return;
+            }
+            
+            intersectionObserver.observe(el);
+          });
+        }
+
+        // Initial observation
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', observeFadeElements);
+        } else {
+          observeFadeElements();
+        }
+
+        // Watch for dynamically added content (for SPA navigation)
+        const mutationObserver = new MutationObserver(function(mutations) {
+          observeFadeElements();
+          setupScrollIndicator();
+        });
+
+        mutationObserver.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+        
+        // Setup scroll indicator click handler
+        function setupScrollIndicator() {
+          const scrollIndicators = document.querySelectorAll('.scroll-indicator:not([data-scroll-setup])');
+          scrollIndicators.forEach(function(indicator) {
+            // Mark as setup to avoid duplicate listeners
+            indicator.setAttribute('data-scroll-setup', 'true');
+            
+            indicator.addEventListener('click', function() {
+              window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+              });
+            });
+          });
+        }
+        
+        // Initial setup
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', setupScrollIndicator);
+        } else {
+          setupScrollIndicator();
+        }
+      })();
+    </script>
   </head>
 
   <body></body>

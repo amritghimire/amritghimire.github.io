@@ -103,26 +103,31 @@ impl Model {
                 </div>
                 <div class={classes!("navbar-menu", active_class)}>
                     <div class="navbar-end">
-                        <Link<Route> classes={classes!("navbar-item")} to={Route::Home}>
-                            { "Home" }
-                        </Link<Route>>
-                        <Link<Route> classes={classes!("navbar-item")} to={Route::Category{category: "english_literature".to_string()}}>
-                            { "Literature" }
-                        </Link<Route>>
-                        <Link<Route> classes={classes!("navbar-item")} to={Route::Category{category: "literature".to_string()}}>
-                            { "साहित्य" }
-                        </Link<Route>>
-                        <Link<Route> classes={classes!("navbar-item")} to={Route::Category{category: "tech".to_string()}}>
-                            { "Tech" }
-                        </Link<Route>>
+                        <span class="navbar-item" onclick={link.callback(|_| Msg::ToggleNavbar)}>
+                            <Link<Route> to={Route::Home}>
+                                { "Home" }
+                            </Link<Route>>
+                        </span>
+                        <span class="navbar-item" onclick={link.callback(|_| Msg::ToggleNavbar)}>
+                            <Link<Route> to={Route::Category{category: "english_literature".to_string()}}>
+                                { "Literature" }
+                            </Link<Route>>
+                        </span>
+                        <span class="navbar-item" onclick={link.callback(|_| Msg::ToggleNavbar)}>
+                            <Link<Route> to={Route::Category{category: "literature".to_string()}}>
+                                { "साहित्य" }
+                            </Link<Route>>
+                        </span>
                         <div class="navbar-item has-dropdown is-hoverable">
                             <a class="navbar-link">
-                                { "Finrup" }
+                                <span class="navbar-link-text" style="margin-right: 1.5rem;">{ "Finrup" }</span>
                             </a>
                             <div class="navbar-dropdown">
-                                <Link<Route> classes={classes!("navbar-item")} to={Route::Tag{tag: "finrup".to_string()}}>
-                                    { "Finrup Blog Posts" }
-                                </Link<Route>>
+                                <span class="navbar-item" onclick={link.callback(|_| Msg::ToggleNavbar)}>
+                                    <Link<Route> to={Route::Tag{tag: "finrup".to_string()}}>
+                                        { "Finrup Blog Posts" }
+                                    </Link<Route>>
+                                </span>
                                 <a class="navbar-item" href="/finrup-budgeting-tips.html">
                                     { "Best Budgeting Tips" }
                                 </a>
@@ -135,6 +140,11 @@ impl Model {
                                 </a>
                             </div>
                         </div>
+                        <span class="navbar-item" onclick={link.callback(|_| Msg::ToggleNavbar)}>
+                            <Link<Route> to={Route::Category{category: "tech".to_string()}}>
+                                { "Tech" }
+                            </Link<Route>>
+                        </span>
                     </div>
                 </div>
             </nav>

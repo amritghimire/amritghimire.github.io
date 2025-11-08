@@ -30,24 +30,12 @@ impl Component for Home {
         html! {
             <div>
                 { self.view_intro() }
-                <div class="container">
-                    { self.view_experiences() }
-                </div>
-                <div class="container">
-                    { self.view_blogs() }
-                </div>
-                <div class="container">
-                    { self.view_projects() }
-                </div>
-                <div class="container">
-                    { self.view_education() }
-                </div>
-                <div class="container">
-                    { self.view_certifications() }
-                </div>
-                <div class="container">
-                    { self.view_contact() }
-                </div>
+                { self.view_blogs() }
+                { self.view_experiences() }
+                { self.view_projects() }
+                { self.view_education() }
+                { self.view_certifications() }
+                { self.view_contact() }
             </div>
         }
     }
@@ -55,21 +43,31 @@ impl Component for Home {
 impl Home {
     fn view_intro(&self) -> Html {
         html! {
-        <section class={classes!("hero","is-link","is-fullheight-with-navbar", self.intro_style())}>
+        <section class={classes!("hero","is-link","is-fullheight-with-navbar", "has-background", self.intro_style())}>
             <figure class="image is-fullwidth hero-background is-transparent">
-                <img alt="Amrit" src="/img/amrit.webp" />
+                <img alt="Amrit" src="/img/amrit.webp" loading="eager" fetchpriority="high" />
             </figure>
           <div class="hero-body">
             <div class="container has-text-centered">
-              <p class="subtitle is-size-2">
+              <p class="subtitle is-size-2 fade-in-on-scroll">
                 {&self.generator.website().pre_intro}
               </p>
-              <p class="title is-size-1">
+              <p class="title is-size-1 fade-in-on-scroll">
               {"Amrit Ghimire, Ranjit"}
               </p>
-              <p class="subtitle is-size-2">
+              <p class="subtitle is-size-2 fade-in-on-scroll">
                 {&self.generator.website().post_intro}
               </p>
+            </div>
+          </div>
+          <div class="hero-footer">
+            <div class="scroll-indicator">
+              <span class="scroll-text">{"Scroll to explore"}</span>
+              <div class="scroll-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
           </div>
         </section>
@@ -87,9 +85,9 @@ impl Home {
         });
 
         html! {
-            <section class="section">
+            <section class="section fade-in-on-scroll">
             <div class="container">
-                <h1 class="title content has-text-centered">{"Few of my attempts.."}</h1>
+                <h1 class="title content has-text-centered mb-6">{"Few of my attempts.."}</h1>
                 <div class="tile is-ancestor">
                     <div class="tile is-parent">
                         { for cards.by_ref().take(3) }
@@ -105,9 +103,11 @@ impl Home {
                         { for cards.by_ref().take(3) }
                     </div>
                 </div>
-                <Link<Route> classes={classes!("is-centered", "is-text-centered")} to={Route::Posts}>
-                    <button class="button is-large my-3 px-6">{ "View more..." }</button>
-                </Link<Route>>
+                <div class="has-text-centered mt-5">
+                    <Link<Route> classes={classes!("is-centered", "is-text-centered")} to={Route::Posts}>
+                        <button class="button is-large is-info">{ "View more..." }</button>
+                    </Link<Route>>
+                </div>
             </div>
             </section>
         }
@@ -120,7 +120,7 @@ impl Home {
                 <article class="media is-flex-mobile is-flex-wrap-wrap-mobile">
                   <figure class="media-left">
                     <p class="image is-64x64 mx-3">
-                      <img src={experience.logo.clone()} />
+                      <img src={experience.logo.clone()} alt={format!("{} logo", experience.company.clone())} loading="lazy" decoding="async" />
                     </p>
                   </figure>
                   <div class="media-content">
@@ -140,20 +140,25 @@ impl Home {
         });
 
         html! {
-            <section class="section">
+            <section class="section fade-in-on-scroll">
                 <div class="container">
                     <h1 class="title content has-text-centered mb-6">{"Some of my journey"}</h1>
                     <div class="columns is-centered">
                       <div class="column is-half">
-                        <p class="bd-notification is-primary">
+                        <div class="experience-timeline">
                           {for cards}
-                        </p>
+                        </div>
                         <div class="divider"></div>
                         <div class="columns is-centered">
                           <div class="column is-half">
-                            <p class="bd-notification is-primary">
-                                <a style="display:block;" target="_blank" class="link centered-link ml-6 mt-4" href={self.generator.website().linkedin.clone()}>{"View more on LinkedIn"}</a>
-                            </p>
+                            <div class="has-text-centered mt-4">
+                                <a target="_blank" class="button is-info" href={self.generator.website().linkedin.clone()}>
+                                    <span class="icon">
+                                      <i class="fab fa-linkedin"></i>
+                                    </span>
+                                    <span>{"View more on LinkedIn"}</span>
+                                </a>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -196,14 +201,13 @@ impl Home {
             }
         });
         html! {
-            <section class="section">
+            <section class="section fade-in-on-scroll">
                 <div class="container">
                   <h1 class="title content has-text-centered mb-6">{"Notable Projects"}</h1>
                   <div class="columns" style="flex-wrap: wrap;">
                     { for cards }
                   </div>
                 </div>
-
             </section>
         }
     }
@@ -212,19 +216,37 @@ impl Home {
         let education = self.generator.education();
         let cards = education.iter().map(|e| {
             html! {
-                <div>
-                    <strong>{&e.institute}</strong><small>{" ("}{&e.start}{"-"}{&e.end}{")"}</small><br/>
-                    <span class="mr-2">{&e.title}</span><strong><u>{&e.subject}</u></strong>
+                <div class="column is-6">
+                    <div class="education-card">
+                        <div class="education-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="education-content">
+                            <h3 class="education-institute">{&e.institute}</h3>
+                            <div class="education-degree">
+                                <span class="degree-title">{&e.title}</span>
+                                <span class="degree-subject">{&e.subject}</span>
+                            </div>
+                            <div class="education-period">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>{&e.start}{" - "}{&e.end}</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             }
         });
 
         html! {
-            <section class="section">
+            <section class="section education-section fade-in-on-scroll">
                 <div class="container">
                   <h1 class="title content has-text-centered mb-6">{"Education"}</h1>
-                  <div class="has-text-centered">
-                    { for cards }
+                  <div class="columns is-centered">
+                    <div class="column is-10">
+                      <div class="columns is-multiline is-vcentered">
+                        { for cards }
+                      </div>
+                    </div>
                   </div>
                 </div>
             </section>
@@ -235,19 +257,44 @@ impl Home {
         let certification = self.generator.certifications();
         let cards = certification.iter().map(|c| {
             html! {
-                <div>
-                    <a class="link" target="_blank" href={c.link.clone()}>{&c.title}</a>
-                    <span class="mx-2">{&c.issuer}</span><small>{"("}{&c.issued_at}{")"}</small>
+                <div class="column is-6">
+                    <div class="certification-card">
+                        <div class="certification-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="certification-content">
+                            <a class="certification-title" target="_blank" href={c.link.clone()}>
+                                {&c.title}
+                            </a>
+                            <div class="certification-meta">
+                                <span class="certification-issuer">
+                                    <i class="fas fa-building"></i>
+                                    {&c.issuer}
+                                </span>
+                                <span class="certification-date">
+                                    <i class="fas fa-calendar"></i>
+                                    {&c.issued_at}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="certification-link-icon">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
                 </div>
             }
         });
 
         html! {
-            <section class="section">
+            <section class="section certifications-section fade-in-on-scroll">
                 <div class="container">
                   <h1 class="title content has-text-centered mb-6">{"Certifications"}</h1>
-                  <div class="has-text-centered">
-                    { for cards }
+                  <div class="columns is-centered">
+                    <div class="column is-10">
+                      <div class="columns is-multiline">
+                        { for cards }
+                      </div>
+                    </div>
                   </div>
                 </div>
             </section>
@@ -256,29 +303,38 @@ impl Home {
 
     fn view_contact(&self) -> Html {
         html! {
-            <section class="section">
+            <section class="section contact-section fade-in-on-scroll">
                 <div class="container">
                   <h1 class="title content has-text-centered mb-6">{"Find me at"}</h1>
                     <div class="columns is-centered">
-                      <div class="column is-half">
-                          <div class="buttons" style="justify-content:center;">
-                            <a  class="button is-info" href={self.generator.website().github.clone()}>
-                                <span class="icon">
+                      <div class="column is-8">
+                          <div class="social-links">
+                            <a class="social-link github-link" href={self.generator.website().github.clone()} target="_blank" rel="noopener">
+                                <div class="social-icon">
                                   <i class="fab fa-github"></i>
-                                </span>
-                                <span>{"Github"}</span>
+                                </div>
+                                <div class="social-content">
+                                  <span class="social-label">{"GitHub"}</span>
+                                  <span class="social-desc">{"View my code"}</span>
+                                </div>
                             </a>
-                            <a  class="button is-info" href={self.generator.website().linkedin.clone()}>
-                                <span class="icon">
+                            <a class="social-link linkedin-link" href={self.generator.website().linkedin.clone()} target="_blank" rel="noopener">
+                                <div class="social-icon">
                                   <i class="fab fa-linkedin"></i>
-                                </span>
-                                <span>{"LinkedIn"}</span>
+                                </div>
+                                <div class="social-content">
+                                  <span class="social-label">{"LinkedIn"}</span>
+                                  <span class="social-desc">{"Connect with me"}</span>
+                                </div>
                             </a>
-                            <a  class="button is-info" href={self.generator.website().email.clone()}>
-                                <span class="icon">
-                                  <i class="fab fa-envelope"></i>
-                                </span>
-                                <span>{"Email"}</span>
+                            <a class="social-link email-link" href={self.generator.website().email.clone()}>
+                                <div class="social-icon">
+                                  <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="social-content">
+                                  <span class="social-label">{"Email"}</span>
+                                  <span class="social-desc">{"Get in touch"}</span>
+                                </div>
                             </a>
                           </div>
                       </div>
@@ -295,16 +351,6 @@ impl Home {
             r#"
                 position: relative;
                 overflow: hidden;
-                .hero-background {
-                  position: absolute;
-                  object-fit: cover;
-                  object-position: center center;
-                  width: 100%;
-                  height: 100%;
-                }
-                .hero-background.is-transparent {
-                  opacity: 0.3;
-                }
             "#
         )
         .expect("Failed to mount style!")

@@ -10,11 +10,16 @@
     <meta name="author" content="Amrit Ghimire"/>
     <meta property="og:title" content="Amrit Ghimire, Ranjit" />
     <meta property="og:description" content="Personal Website of Amrit Ghimire Ranjit Including the blog content, experiences and other" />
+    
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preload" href="/img/amrit.webp" as="image" type="image/webp">
 
     <base href="/" />
     <link rel="stylesheet" href="/bulma.min-5cd726a688b47d72.css" integrity="sha384-4em484va1axTOWEtQ2De+F+ZcQgGnWxvbINokKfnVZxyJZP5Iu0RzVqk6N29pMxQ" preload/>
     <link rel="stylesheet" href="/brands.min-d10e2e879f2a7f02.css" integrity="sha384-bSSRmv/7zc8N//nlEscKMJrVdXnmDX0i3KY5/Z25DbCimvRgRrefGMGQORqrdfD+"/>
-    <link rel="stylesheet" href="/index-b3c056c773a69701.css" integrity="sha384-RGiRrhxJ7JJjazACv6U1q9R7edZbeehn4e7cd6qJdW/iwLXcGslEskvWRhcZ5Swk"/>
+    <link rel="stylesheet" href="/index-1ebf7c11b0d806ca.css" integrity="sha384-OyBFA/b1STQ0rbS77ULK2h3U4BEddmusFqi84WIfqjdisbLPdiRJJYTUCoGCcuDc"/>
     
     
     
@@ -55,12 +60,97 @@
       }(window.location))
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
-  <link rel="modulepreload" href="/personal-frontend-65f885abd24126dc.js" crossorigin="anonymous" integrity="sha384-Al8qnUk4yfBJMPqiG3rseEVzwmj+ogwiSWH5qkkpGFKo/xtegtPupOiQ6rE+Edmc"><link rel="modulepreload" href="/snippets/personal-frontend-3f1927461f93d00e/inline0.js" crossorigin="anonymous" integrity="sha384-ZqhrVg0S75gp/HZqhrcJkRReyLFg+OQLz43dwCPbTBo+7uBLnd0OWOoHQ4bDyelN"><link rel="preload" href="/personal-frontend-65f885abd24126dc_bg.wasm" crossorigin="anonymous" integrity="sha384-m2Cw2B+ZjTqNcOiwO9e941Q85tkN/k5rMUKz37Ofiu1Lh0wTc2pUwnKp24subbA2" as="fetch" type="application/wasm"></head>
+    
+    <!-- Intersection Observer for Scroll Animations -->
+    <script type="text/javascript">
+      (function() {
+        // Intersection Observer for fade-in-on-scroll animations
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.1
+        };
+
+        const intersectionObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              intersectionObserver.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        // Function to observe fade-in elements
+        function observeFadeElements() {
+          const fadeElements = document.querySelectorAll('.fade-in-on-scroll:not(.visible)');
+          fadeElements.forEach(function(el) {
+            // Check if element is in hero section - make visible immediately
+            const heroSection = el.closest('.hero');
+            if (heroSection) {
+              el.classList.add('visible');
+              return;
+            }
+            
+            // Check if element is already in viewport
+            const rect = el.getBoundingClientRect();
+            const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+            if (isInViewport) {
+              el.classList.add('visible');
+              return;
+            }
+            
+            intersectionObserver.observe(el);
+          });
+        }
+
+        // Initial observation
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', observeFadeElements);
+        } else {
+          observeFadeElements();
+        }
+
+        // Watch for dynamically added content (for SPA navigation)
+        const mutationObserver = new MutationObserver(function(mutations) {
+          observeFadeElements();
+          setupScrollIndicator();
+        });
+
+        mutationObserver.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+        
+        // Setup scroll indicator click handler
+        function setupScrollIndicator() {
+          const scrollIndicators = document.querySelectorAll('.scroll-indicator:not([data-scroll-setup])');
+          scrollIndicators.forEach(function(indicator) {
+            // Mark as setup to avoid duplicate listeners
+            indicator.setAttribute('data-scroll-setup', 'true');
+            
+            indicator.addEventListener('click', function() {
+              window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+              });
+            });
+          });
+        }
+        
+        // Initial setup
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', setupScrollIndicator);
+        } else {
+          setupScrollIndicator();
+        }
+      })();
+    </script>
+  <link rel="modulepreload" href="/personal-frontend-4d875996db81cdc6.js" crossorigin="anonymous" integrity="sha384-N708lrhdofOAuLZEyWfH6QJ7zvKmUdteqsyRYNWXHLgcgK7aRosnHf4YYXia0yQO"><link rel="modulepreload" href="/snippets/personal-frontend-3f1927461f93d00e/inline0.js" crossorigin="anonymous" integrity="sha384-ZqhrVg0S75gp/HZqhrcJkRReyLFg+OQLz43dwCPbTBo+7uBLnd0OWOoHQ4bDyelN"><link rel="preload" href="/personal-frontend-4d875996db81cdc6_bg.wasm" crossorigin="anonymous" integrity="sha384-DU6XeQ88VlcMXg7ux8DMQ6cdCey9xq2mSD+F7QGMDdaZnIA4k2JjXeWj8sfAtdNU" as="fetch" type="application/wasm"></head>
 
   <body>
 <script type="module">
-import init, * as bindings from '/personal-frontend-65f885abd24126dc.js';
-const wasm = await init({ module_or_path: '/personal-frontend-65f885abd24126dc_bg.wasm' });
+import init, * as bindings from '/personal-frontend-4d875996db81cdc6.js';
+const wasm = await init({ module_or_path: '/personal-frontend-4d875996db81cdc6_bg.wasm' });
 
 
 window.wasmBindings = bindings;

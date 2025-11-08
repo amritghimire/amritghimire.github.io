@@ -69,7 +69,7 @@ impl Component for Model {
                 <footer class="footer">
                     <div class="content has-text-centered">
                         {"Developed completely in Rust | Amrit Ghimire, Ranjit "}
-                        <p class="copyright pt-4">{"The fingerprint of " } <a href="https://keybase.io/amritghimire">{"GPG key is F83D048426BD7B2A63CDAC0008E895807FE435FE"}</a></p>
+                        <p class="copyright pt-4">{"The fingerprint of " } <a href="https://keybase.io/amritghimire" class="gpg-key">{"GPG key is F83D048426BD7B2A63CDAC0008E895807FE435FE"}</a></p>
                         <p style="font-size: 16px;"><a href="https://keybase.io/amritghimire" target="_blank" rel="noopener">{"amritghimire on Keybase"} </a></p>
                    </div>
                 </footer>

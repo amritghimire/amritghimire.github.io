@@ -1364,6 +1364,21 @@ section {
       color: var(--color-primary);
     }
   }
+  
+  .copyright {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    
+    .gpg-key {
+      word-break: break-all;
+      word-wrap: break-word;
+      overflow-wrap: anywhere;
+      display: inline-block;
+      max-width: 100%;
+      hyphens: none;
+    }
+  }
 }
 
 // Responsive Design

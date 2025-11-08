@@ -1140,6 +1140,19 @@ section:nth-child(10) {
 .footer a:hover {
   color: var(--color-primary);
 }
+.footer .copyright {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.footer .copyright .gpg-key {
+  word-break: break-all;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  display: inline-block;
+  max-width: 100%;
+  hyphens: none;
+}
 
 @media screen and (max-width: 768px) {
   .hero .title {

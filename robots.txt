@@ -1,1 +1,1 @@
-Sitemap: https://amritghimire.com/sitemap.txt
+User-agent: *

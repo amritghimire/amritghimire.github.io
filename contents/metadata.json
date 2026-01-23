@@ -1,4 +1,14 @@
 {
+    "biblioform-support": {
+        "title": "Biblioform Support",
+        "category": "Tech",
+        "excerpt": "Welcome to Biblioform! This guide will help you get the most out of your book collection management app. Learn how to organize your library, track reading progress, set goals, and use all the powerful features Biblioform has to offer.",
+        "file": "tech/biblioform-support.md",
+        "keywords": "biblioform,book library,book management,reading tracker,book collection,ios app,mac app,book organizer,reading goals",
+        "tags": "biblioform,book-management,reading-tracker,library-app",
+        "image_url": null,
+        "created_at": "2026-01-23T10:00:00-0500"
+    },
     "finrup-expense-tracking-guide": {
         "title": "How to Track Expenses with Finrup: Complete Guide",
         "category": "Tech",

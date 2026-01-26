@@ -8,7 +8,7 @@ Welcome to BizNava support! We're here to help you get the most out of your busi
 
 If you have questions, need help, or want to report an issue, please reach out:
 
-**Email**: [email protected]
+**Email**: biznava@amritghimire.com
 
 We typically respond within 24-48 hours.
 

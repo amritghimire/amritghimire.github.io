@@ -37,14 +37,22 @@ impl Component for Post {
 
             html! {
                 <>
-                    <section class="hero is-small is-light has-background">
-                        <img
-                            class="hero-background is-transparent"
-                            src={post.meta.image_url.clone()}
-                            alt={post.meta.title.clone()}
-                            loading="eager"
-                            decoding="async"
-                        />
+                    <section class={classes!("hero", "is-small", "is-light", if post.meta.image_url.is_some() { "has-background" } else { "" })}>
+                        {
+                            if let Some(ref image_url) = post.meta.image_url {
+                                html! {
+                                    <img
+                                        class="hero-background is-transparent"
+                                        src={image_url.clone()}
+                                        alt={post.meta.title.clone()}
+                                        loading="eager"
+                                        decoding="async"
+                                    />
+                                }
+                            } else {
+                                html! {}
+                            }
+                        }
                         <div class="hero-body">
                             <div class="container">
                                 <h1 class="title fade-in-on-scroll">

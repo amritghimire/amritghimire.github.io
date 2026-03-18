@@ -128,6 +128,40 @@ body {
       transform: translateY(0) !important;
     }
     
+    .hero-text-left {
+      text-align: left;
+      max-width: 600px;
+      margin-left: 5%;
+      
+      @media screen and (max-width: 768px) {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    
+    .hero-cta {
+      display: flex;
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-xl);
+      
+      .button.is-outlined.is-light {
+        border-color: rgba(255, 255, 255, 0.6);
+        color: #ffffff !important;
+        background: transparent;
+        
+        &:hover {
+          background: rgba(255, 255, 255, 0.15);
+          border-color: #ffffff;
+        }
+      }
+      
+      @media screen and (max-width: 768px) {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+    
     .title, .subtitle {
       color: #ffffff !important;
       text-shadow: 
@@ -979,7 +1013,6 @@ section {
     border: 2px solid var(--color-border);
     transition: all var(--transition-base);
     width: 100%;
-    height: 100%;
     
     &:hover {
       transform: translateY(-4px);
@@ -1085,7 +1118,6 @@ section {
     border: 2px solid var(--color-border);
     transition: all var(--transition-base);
     width: 100%;
-    height: 100%;
     position: relative;
     overflow: hidden;
     
@@ -1349,6 +1381,111 @@ section {
   }
 }
 
+// Alternating section backgrounds
+.home-sections {
+  > section:nth-child(even) {
+    background-color: var(--color-bg-light);
+  }
+  
+  > section:nth-child(odd) {
+    background-color: var(--color-bg);
+  }
+  
+  // Hero always keeps its own background
+  > section:first-child {
+    background-color: transparent;
+  }
+}
+
+// Featured Apps Strip
+.apps-strip {
+  .app-card {
+    background: var(--color-bg);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    border: 2px solid var(--color-border);
+    padding: var(--spacing-xl);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition-base);
+    
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--color-primary-light);
+    }
+    
+    .app-card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-sm);
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .app-card-desc {
+      font-size: 0.95rem;
+      color: var(--color-text-light);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .app-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      color: var(--color-primary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      
+      &:hover {
+        color: var(--color-primary-dark);
+        transform: translateX(4px);
+      }
+    }
+  }
+}
+
+// Featured blog post
+.featured-post {
+  margin-bottom: var(--spacing-xl);
+  
+  .card {
+    border: 2px solid var(--color-primary-light);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+.blog-grid {
+  .column.is-6 {
+    display: flex;
+    
+    .card {
+      width: 100%;
+    }
+  }
+}
+
+// Education & Certifications merged section
+.edu-certs-section {
+  .education-section,
+  .certifications-section {
+    .subtitle {
+      font-weight: 600;
+      color: var(--color-text);
+      
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
 // Footer
 .footer {
   background: var(--color-bg-dark);
@@ -1365,18 +1502,33 @@ section {
     }
   }
   
-  .copyright {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-md);
     
-    .gpg-key {
-      word-break: break-all;
-      word-wrap: break-word;
-      overflow-wrap: anywhere;
-      display: inline-block;
-      max-width: 100%;
-      hyphens: none;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: #cbd5e0;
+      font-size: 1.125rem;
+      transition: all var(--transition-fast);
+      
+      &:hover {
+        background: var(--gradient-primary);
+        color: #ffffff;
+        transform: translateY(-2px);
+      }
+      
+      svg {
+        fill: currentColor;
+      }
     }
   }
 }
@@ -1438,6 +1590,7 @@ section {
   }
   
   .navbar-menu {
+    background-color: unset;
     .navbar-item {
       padding: 0.75rem 1rem;
     }
@@ -1605,4 +1758,41 @@ section {
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+// Accessibility: Respect reduced motion preference
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .fade-in-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+// Accessibility: Keyboard focus styles
+:focus-visible {
+  outline: 3px solid var(--color-primary-light);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+a:focus-visible,
+button:focus-visible,
+.navbar-item:focus-visible,
+.button:focus-visible,
+.card:focus-visible {
+  outline: 3px solid var(--color-primary-light);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.3);
 }

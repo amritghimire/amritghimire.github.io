@@ -1,7 +1,7 @@
 {
  "website": {
   "pre_intro": "Hi there, I'm",
-  "post_intro": "",
+  "post_intro": "Software Engineer • Open Source Enthusiast • Writer",
   "linkedin": "https://www.linkedin.com/in/iamritghimire/",
   "github": "https://github.com/amritghimire",
   "email": "mailto:contact_me@amritghimire.com"
@@ -45,6 +45,42 @@
   }
  ],
  "projects": [
+  {
+   "title": "Finrup",
+   "description": "Personal finance app for tracking expenses, income and budgets with Apple Intelligence. Fast, private, and effortless money management for iOS, iPadOS, visionOS and macOS.",
+   "link": "https://apps.apple.com/app/finrup/id6752817572",
+   "tags": [
+    "Finance",
+    "Expense Tracker",
+    "Budget",
+    "Apple Intelligence"
+   ],
+   "language": "swift"
+  },
+  {
+   "title": "BizNava",
+   "description": "Complete business booking solution for managing appointments, clients, and services. Perfect for freelancers, consultants, and small business owners.",
+   "link": "https://apps.apple.com/app/biznava/id6758286607",
+   "tags": [
+    "Business",
+    "Booking",
+    "Client Management",
+    "Appointments"
+   ],
+   "language": "swift"
+  },
+  {
+   "title": "Biblioform",
+   "description": "Personal book library manager to track where every book is located, organize by category, monitor reading progress, and set reading goals.",
+   "link": "https://apps.apple.com/app/biblioform/id6758194555",
+   "tags": [
+    "Books",
+    "Library",
+    "Reading Tracker",
+    "Book Management"
+   ],
+   "language": "swift"
+  },
   {
    "title": "Jira Terminal",
    "description": "The application that can be used for personal usage to manage jira from terminal. ",

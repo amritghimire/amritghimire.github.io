@@ -68,9 +68,18 @@ impl Component for Model {
                 </main>
                 <footer class="footer">
                     <div class="content has-text-centered">
-                        {"Developed completely in Rust | Amrit Ghimire, Ranjit "}
-                        <p class="copyright pt-4">{"The fingerprint of " } <a href="https://keybase.io/amritghimire" class="gpg-key">{"GPG key is F83D048426BD7B2A63CDAC0008E895807FE435FE"}</a></p>
-                        <p style="font-size: 16px;"><a href="https://keybase.io/amritghimire" target="_blank" rel="noopener">{"amritghimire on Keybase"} </a></p>
+                        <p>{"© 2026 Amrit Ghimire | Built with Rust"}</p>
+                        <div class="footer-social">
+                            <a href="https://github.com/amritghimire" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/iamritghimire/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="mailto:contact_me@amritghimire.com" aria-label="Email">
+                                <svg width="20" height="20" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+                            </a>
+                        </div>
                    </div>
                 </footer>
             </BrowserRouter>
@@ -131,11 +140,9 @@ impl Model {
                                 <a class="navbar-item" href="/finrup-budgeting-tips.html">
                                     { "Best Budgeting Tips" }
                                 </a>
-                                <a class="navbar-item" href="/support.html">
-                                    { "Support" }
-                                </a>
+
                                 <hr class="navbar-divider" />
-                                <a class="navbar-item" href="https://apps.apple.com/in/app/finrup/id6752817572" target="_blank" rel="noopener">
+                                <a class="navbar-item" href="https://apps.apple.com/in/app/finrup/id6752817572" target="_blank" rel="noopener noreferrer">
                                     { "Download Finrup" }
                                 </a>
                             </div>

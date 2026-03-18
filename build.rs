@@ -34,8 +34,9 @@ fn main() -> Result<(), Box<dyn Error>> {
     ];
 
     for (slug, meta) in metadata.iter() {
-        let url = format!("{}posts/{}/", WEBSITE, slug);
-        url_links.push(format!("/posts/{}/", slug));
+        let category = meta.category.to_lowercase().replace(' ', "_");
+        let url = format!("{}{}/{}/", WEBSITE, category, slug);
+        url_links.push(format!("/{}/{}/", category, slug));
         urls.push(UrlEntry {
             loc: url.parse().unwrap(),
             changefreq: None,
@@ -67,7 +68,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut buffer = File::create("sitemap.txt")?;
     writeln!(buffer, "{}", WEBSITE)?;
     for link in url_links {
-        writeln!(buffer, "{}?{}", WEBSITE, link)?;
+        writeln!(buffer, "{}{}", WEBSITE, link.trim_start_matches('/'))?;
     }
 
     Ok(())

@@ -132,12 +132,12 @@ impl PostList {
         html! {
             <div class="container">
                 <div class="tile is-ancestor">
-                    <div class="tile is-parent is-vertical">
+                    <ul class="tile is-parent is-vertical" style="list-style: none; padding: 0;">
                         { for even }
-                    </div>
-                    <div class="tile is-parent is-vertical">
+                    </ul>
+                    <ul class="tile is-parent is-vertical" style="list-style: none; padding: 0;">
                         { for odd }
-                    </div>
+                    </ul>
                 </div>
             </div>
         }

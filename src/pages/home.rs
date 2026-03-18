@@ -79,7 +79,10 @@ impl Home {
     }
 
     fn view_apps(&self) -> Html {
-        let apps: Vec<_> = self.generator.projects().iter()
+        let apps: Vec<_> = self
+            .generator
+            .projects()
+            .iter()
             .filter(|p| p.language == "swift")
             .collect();
 
@@ -121,13 +124,18 @@ impl Home {
             }
         });
 
-        let smaller: Vec<_> = posts.iter().skip(1).take(4).map(|post| {
-            html! {
-                <li class="column is-6">
-                    <PostCard slug={post.slug.clone()} />
-                </li>
-            }
-        }).collect();
+        let smaller: Vec<_> = posts
+            .iter()
+            .skip(1)
+            .take(4)
+            .map(|post| {
+                html! {
+                    <li class="column is-6">
+                        <PostCard slug={post.slug.clone()} />
+                    </li>
+                }
+            })
+            .collect();
 
         html! {
             <section class="section fade-in-on-scroll">

@@ -1,3 +1,4 @@
+use rss::{ChannelBuilder, ItemBuilder};
 use serde::{Deserialize, Serialize};
 use sitewriter::{UrlEntry, UrlEntryBuilder};
 use std::collections::HashMap;
@@ -12,6 +13,10 @@ const WEBSITE: &str = "https://amritghimire.com/";
 struct MetadataJson {
     created_at: String,
     category: String,
+    #[serde(default)]
+    title: Option<String>,
+    #[serde(default)]
+    excerpt: Option<String>,
 }
 
 type PostMetadata = HashMap<String, MetadataJson>;
@@ -71,5 +76,53 @@ fn main() -> Result<(), Box<dyn Error>> {
         writeln!(buffer, "{}{}", WEBSITE, link.trim_start_matches('/'))?;
     }
 
+    // Generate RSS feeds
+    generate_feed(&metadata, "feed.xml", "Amrit Ghimire", None)?;
+    generate_feed(&metadata, "feed-tech.xml", "Amrit Ghimire - Tech", Some(&["tech"]))?;
+    generate_feed(
+        &metadata,
+        "feed-literature.xml",
+        "Amrit Ghimire - Literature",
+        Some(&["literature", "english_literature"]),
+    )?;
+
+    Ok(())
+}
+
+fn generate_feed(
+    metadata: &PostMetadata,
+    filename: &str,
+    title: &str,
+    categories: Option<&[&str]>,
+) -> Result<(), Box<dyn Error>> {
+    let mut items: Vec<(String, rss::Item)> = Vec::new();
+    for (slug, meta) in metadata.iter() {
+        if let Some(cats) = categories {
+            if !cats.iter().any(|c| c.eq_ignore_ascii_case(&meta.category)) {
+                continue;
+            }
+        }
+        let category = meta.category.to_lowercase().replace(' ', "_");
+        let url = format!("{}{}/{}/", WEBSITE, category, slug);
+        let item = ItemBuilder::default()
+            .title(meta.title.clone())
+            .link(Some(url))
+            .description(meta.excerpt.clone())
+            .pub_date(Some(meta.created_at.clone()))
+            .build();
+        items.push((meta.created_at.clone(), item));
+    }
+    items.sort_by(|a, b| b.0.cmp(&a.0));
+    let rss_items: Vec<rss::Item> = items.into_iter().map(|(_, item)| item).collect();
+
+    let channel = ChannelBuilder::default()
+        .title(title)
+        .link(WEBSITE)
+        .description(format!("Blog posts by {}", title))
+        .items(rss_items)
+        .build();
+
+    let rss_file = File::create(filename)?;
+    channel.write_to(rss_file)?;
     Ok(())
 }

@@ -78,7 +78,12 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     // Generate RSS feeds
     generate_feed(&metadata, "feed.xml", "Amrit Ghimire", None)?;
-    generate_feed(&metadata, "feed-tech.xml", "Amrit Ghimire - Tech", Some(&["tech"]))?;
+    generate_feed(
+        &metadata,
+        "feed-tech.xml",
+        "Amrit Ghimire - Tech",
+        Some(&["tech"]),
+    )?;
     generate_feed(
         &metadata,
         "feed-literature.xml",

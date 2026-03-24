@@ -1409,6 +1409,80 @@ section:nth-child(10) {
     font-size: 0.8125rem;
   }
 }
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(17px, 5%, 40px) clamp(17px, 7%, 50px);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+}
+.newsletter-form form {
+  width: 100%;
+}
+.newsletter-form .newsletter-heading {
+  font-weight: bold;
+  color: var(--color-text);
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+.newsletter-form .newsletter-input {
+  width: 100%;
+  margin-bottom: var(--spacing-sm);
+}
+.newsletter-form .newsletter-input input {
+  width: 100%;
+  height: 40px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 0.875rem;
+  text-align: center;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+.newsletter-form .newsletter-input input:focus {
+  border-color: var(--color-primary);
+}
+.newsletter-form .newsletter-input input::placeholder {
+  color: var(--color-text-muted);
+}
+.newsletter-form .newsletter-submit {
+  width: 100%;
+}
+.newsletter-form .newsletter-submit button {
+  width: 100%;
+  height: 40px;
+  border: 0;
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-dark);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+.newsletter-form .newsletter-submit button:hover {
+  background-color: var(--color-primary-dark);
+}
+.newsletter-form .newsletter-powered-by {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--spacing-sm);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+.newsletter-form .newsletter-powered-by img {
+  margin-left: var(--spacing-sm);
+  height: 1.13em;
+}
+
 @keyframes shimmer {
   0% {
     background-position: -1000px 0;

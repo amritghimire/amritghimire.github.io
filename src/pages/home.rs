@@ -2,6 +2,7 @@ use stylist::{style, Style};
 use yew::prelude::*;
 use yew_router::prelude::*;
 
+use crate::components::newsletter::{Newsletter, NewsletterFeed};
 use crate::components::post_card::PostCard;
 use crate::personal::generator::Generator;
 use crate::posts::PostGenerator;
@@ -35,6 +36,7 @@ impl Component for Home {
                 { self.view_experiences() }
                 { self.view_projects() }
                 { self.view_education_and_certs() }
+                { Self::view_newsletter() }
                 { self.view_contact() }
             </div>
         }
@@ -320,6 +322,20 @@ impl Home {
                       { for cert_cards }
                     </div>
                   </div>
+                </div>
+            </section>
+        }
+    }
+
+    fn view_newsletter() -> Html {
+        html! {
+            <section class="section newsletter-section fade-in-on-scroll">
+                <div class="container">
+                    <div class="columns is-centered">
+                        <div class="column is-6">
+                            <Newsletter feed={NewsletterFeed::All} />
+                        </div>
+                    </div>
                 </div>
             </section>
         }

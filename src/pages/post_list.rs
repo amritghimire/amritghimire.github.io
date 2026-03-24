@@ -1,3 +1,4 @@
+use crate::components::newsletter::{Newsletter, NewsletterFeed};
 use crate::components::pagination::PageQuery;
 use crate::components::{pagination::Pagination, post_card::PostCard};
 use crate::posts::PostGenerator;
@@ -89,6 +90,11 @@ impl Component for PostList {
             Route::Posts
         };
 
+        let newsletter_feed = self
+            .category
+            .as_deref()
+            .and_then(NewsletterFeed::from_category);
+
         html! {
             <div class="section container">
                 <h1 class="title is-capitalized mb-6">{ title }</h1>
@@ -100,6 +106,13 @@ impl Component for PostList {
                         route_to_page={route_to_page}
                     />
                 </div>
+                if let Some(feed) = newsletter_feed {
+                    <div class="columns is-centered mt-6">
+                        <div class="column is-6">
+                            <Newsletter {feed} />
+                        </div>
+                    </div>
+                }
             </div>
         }
     }

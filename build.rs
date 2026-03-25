@@ -1,4 +1,4 @@
-use rss::{ChannelBuilder, ItemBuilder};
+use rss::{CategoryBuilder, ChannelBuilder, GuidBuilder, ItemBuilder};
 use serde::{Deserialize, Serialize};
 use sitewriter::{UrlEntry, UrlEntryBuilder};
 use std::collections::HashMap;
@@ -17,6 +17,10 @@ struct MetadataJson {
     title: Option<String>,
     #[serde(default)]
     excerpt: Option<String>,
+    #[serde(default)]
+    keywords: Option<String>,
+    #[serde(default)]
+    tags: Option<String>,
 }
 
 type PostMetadata = HashMap<String, MetadataJson>;
@@ -109,11 +113,33 @@ fn generate_feed(
         }
         let category = meta.category.to_lowercase().replace(' ', "_");
         let url = format!("{}{}/{}/", WEBSITE, category, slug);
+
+        let mut rss_categories = vec![CategoryBuilder::default().name(&meta.category).build()];
+
+        if let Some(ref tags) = meta.tags {
+            for tag in tags.split(',').map(|t| t.trim()).filter(|t| !t.is_empty()) {
+                rss_categories.push(CategoryBuilder::default().name(tag).build());
+            }
+        }
+        if let Some(ref keywords) = meta.keywords {
+            for kw in keywords
+                .split(',')
+                .map(|k| k.trim())
+                .filter(|k| !k.is_empty())
+            {
+                rss_categories.push(CategoryBuilder::default().name(kw).build());
+            }
+        }
+
+        let guid = GuidBuilder::default().value(&url).permalink(true).build();
+
         let item = ItemBuilder::default()
             .title(meta.title.clone())
             .link(Some(url))
             .description(meta.excerpt.clone())
             .pub_date(Some(meta.created_at.clone()))
+            .categories(rss_categories)
+            .guid(Some(guid))
             .build();
         items.push((meta.created_at.clone(), item));
     }

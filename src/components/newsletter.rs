@@ -22,7 +22,7 @@ impl NewsletterFeed {
 
     pub fn heading(&self) -> &'static str {
         match self {
-            NewsletterFeed::All => "Get all new posts by email:",
+            NewsletterFeed::All => "Get new posts by email:",
             NewsletterFeed::Tech => "Get new tech posts by email:",
             NewsletterFeed::Literature => "Get new literature posts by email:",
         }
